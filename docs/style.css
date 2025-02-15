@@ -3,11 +3,23 @@
     src: url("./fonts/dynapuff.ttf");
 }
 
+@font-face {
+    font-family: "Handwritten";
+    src: url("./fonts/handwritten.ttf");
+}
+
 :root {
     --color-kip-white: #f0f0f0;
     --color-kip-purple: #634f96;
+    --color-kip-dark1: #2a2e31;
+    --color-kip-dark2: #3d4045;
+    --color-kip-dark3: #515467;
+    --color-kip-dark4: #747b98;
+    --color-kip-blue: #5562ff;
+    --color-kip-hotpink: #fe2260;
 
     --footer-height: 200px;
+    --header-height: 54px;
 }
 
 ::selection {
@@ -23,10 +35,14 @@ body {
     margin: 0;
 
     font-family: "Title";
-    background-color: black;
     color: var(--color-kip-white);
 
+    background-color: var(--color-kip-dark1);
     background-image: url("./img/bg.png");
+}
+
+a {
+    color: var(--color-kip-purple);
 }
 
 nav {
@@ -35,6 +51,8 @@ nav {
     width: 100vw;
     padding: 12px;
     z-index: 1000;
+    height: var(--header-height);
+    box-sizing: border-box;
 
     display: flex;
     justify-content: center;
@@ -125,7 +143,8 @@ h2 {
 
 main > section:last-child {
     /* Set the minimum height of the last section so the header element can properly be scrolled to the top */
-    min-height: calc(100vh - var(--footer-height) - 60px);
+    /* Add some extra padding above the section to make it look more organic. */
+    min-height: calc(100vh - var(--footer-height) - var(--header-height) - 40px);
 }
 
 /* HERO */
@@ -133,6 +152,7 @@ main > section:last-child {
 .heroSection {
     position: relative;
     height: 100vh;
+    overflow: hidden;
 }
 
 .heroContainer {
@@ -144,12 +164,12 @@ main > section:last-child {
     left: 0;
 
     background: url("./img/hero.jpg");
-
-    overflow: hidden;
 }
 
 .heroImage {
-    width: 100%;
+    /* Overlap the bounds of the container a little so blurred edges don't look weird. */
+    width: 108%;
+    margin-left: -4%;
     height: 100%;
     object-fit: cover;
 
@@ -170,8 +190,11 @@ main > section:last-child {
 
 .mainHeading {
     text-align: center;
-    filter: drop-shadow(0 0 10px black);
     font-size: 52px;
+    -webkit-text-stroke: 6px var(--color-kip-purple);
+    paint-order: stroke fill;
+
+    filter: drop-shadow(0 0 10px black);
 }
 
 /* Commissions */
@@ -184,7 +207,7 @@ main > section:last-child {
     height: 80px;
     z-index: -1;
 
-    background: linear-gradient(to bottom, rgba(15, 15, 15, 1), rgba(0, 0, 0, 0));
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 1), rgba(15, 15, 15, 0));
 }
 
 .lastContentSectionGradient {
@@ -195,7 +218,7 @@ main > section:last-child {
     height: 80px;
     z-index: -1;
 
-    background: linear-gradient(to top, rgba(15, 15, 15, 1), rgba(0, 0, 0, 0));
+    background: linear-gradient(to top, rgba(15, 15, 15, 1), rgba(15, 15, 15, 0));
 }
 
 @media (max-width: 800px) {
@@ -235,4 +258,15 @@ footer .sectionContent {
 .footerGoober:active {
     filter: saturate(1);
     transform: translateY(-55%) scale(0.9) rotateZ(2deg);
+}
+
+.authorCredit > * {
+    vertical-align: middle;
+}
+
+.authorCredit > a {
+    font-family: "Handwritten";
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
 }
