@@ -73,3 +73,11 @@ document.addEventListener("scroll", (e) => {
 });
 // #endregion
 // ------------------------------------------------------------------------------------------------
+
+function setupGallery() {
+    const galleryImageTemplateEl = document.getElementById("galleryImageTemplate");
+
+    // const galleryImage =
+}
+
+setupGallery();

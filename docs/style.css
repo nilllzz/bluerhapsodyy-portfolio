@@ -1,3 +1,5 @@
+/* #region Common */
+
 @font-face {
     font-family: "Title";
     src: url("./fonts/dynapuff.ttf");
@@ -147,7 +149,9 @@ main > section:last-child {
     min-height: calc(100vh - var(--footer-height) - var(--header-height) - 40px);
 }
 
-/* HERO */
+/* #endregion Common */
+
+/* #region Hero/Home */
 
 .heroSection {
     position: relative;
@@ -174,6 +178,8 @@ main > section:last-child {
     object-fit: cover;
 
     filter: brightness(0.8) saturate(0.8) blur(2px);
+
+    user-select: none;
 }
 
 .heroContent {
@@ -197,7 +203,9 @@ main > section:last-child {
     filter: drop-shadow(0 0 10px black);
 }
 
-/* Commissions */
+/* #endregion Hero/Home */
+
+/* #region Commissions */
 
 .firstContentSectionGradient {
     position: absolute;
@@ -209,6 +217,103 @@ main > section:last-child {
 
     background: linear-gradient(to bottom, rgba(15, 15, 15, 1), rgba(15, 15, 15, 0));
 }
+
+.commissions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    width: 100%;
+}
+
+.commissionContainer {
+    display: flex;
+    gap: 16px;
+    max-width: 100%;
+
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.commissionImageContainer {
+    position: relative;
+    flex: 1;
+    aspect-ratio: 1 / 1;
+
+    border-width: 4px;
+    border-color: var(--color-kip-dark4);
+    border-style: solid;
+    border-radius: 8px;
+    background-color: var(--color-kip-dark4);
+
+    transition: border-color 0.1s ease, background-color 0.1s ease, transform 0.1s ease;
+}
+
+.commissionImageContainer:hover {
+    border-color: var(--color-kip-purple);
+    background-color: var(--color-kip-purple);
+    transform: scale(1.25);
+}
+
+.commissionContainerInverted {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.commissionImageContainer > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+.commissionDetails {
+    flex: 1;
+}
+
+.commissionDetails > p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.commissionTitle {
+    font-size: 28px;
+    color: var(--color-kip-white);
+}
+
+.commissionCost {
+    font-size: 24px;
+    color: var(--color-kip-white);
+}
+
+.commissionMoney {
+    color: var(--color-kip-blue);
+    -webkit-text-stroke: 3px var(--color-kip-white);
+    paint-order: stroke fill;
+}
+
+@media (max-width: 800px) {
+    .commissions {
+        grid-template-columns: 1fr;
+    }
+
+    .commissionContainerInverted {
+        text-align: initial;
+        flex-direction: row;
+    }
+
+    .commissionTitle {
+        font-size: 20px;
+    }
+
+    .commissionCost {
+        font-size: 18px;
+    }
+}
+
+/* #endregion Commissions */
+
+/* #region Footer */
 
 .lastContentSectionGradient {
     position: absolute;
@@ -270,3 +375,5 @@ footer .sectionContent {
     font-weight: bold;
     text-decoration: none;
 }
+
+/* #endregion Footer */

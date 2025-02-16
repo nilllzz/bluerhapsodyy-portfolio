@@ -86,9 +86,96 @@
                 <div class="sectionContent">
                     <h2 id="commissions">Commissions</h2>
 
-                    <p>Commission info, including pricing and contact methods below.</p>
-                    <p>Button to open modal to show TOS and payment info.</p>
+                    <div class="commissions">
+                        <div class="commissionContainer">
+                            <div class="commissionImageContainer">
+                                <img src="img/commissions/stickers.png" />
+                            </div>
+                            <div class="commissionDetails">
+                                <p class="commissionTitle">Stickers</p>
+                                <p class="commissionCost">
+                                    <span class="commissionMoney">$20</span>
+                                    <span class="commissionCostInfo">*</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commissionContainer">
+                            <div class="commissionImageContainer">
+                                <img src="img/commissions/renderedBust.jpg" />
+                            </div>
+                            <div class="commissionDetails">
+                                <p class="commissionTitle">Rendered Bust</p>
+                                <p class="commissionCost">
+                                    <span class="commissionMoney">$40</span>
+                                    <span class="commissionCostInfo">*</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commissionContainer commissionContainerInverted">
+                            <div class="commissionImageContainer">
+                                <img src="img/commissions/meme.png" />
+                            </div>
+                            <div class="commissionDetails">
+                                <p class="commissionTitle">Meme</p>
+                                <p class="commissionCost">
+                                    <span class="commissionMoney">$15</span>
+                                    <span class="commissionCostInfo">*</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commissionContainer commissionContainerInverted">
+                            <div class="commissionImageContainer">
+                                <img src="img/commissions/renderedFull.jpg" />
+                            </div>
+                            <div class="commissionDetails">
+                                <p class="commissionTitle">Rendered full with Background</p>
+                                <p class="commissionCost">
+                                    <span class="commissionMoney">$50 - $80</span>
+                                    <span class="commissionCostInfo">*</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commissionContainer">
+                            <div class="commissionImageContainer">
+                                <img src="img/commissions/refsheet.jpg" />
+                            </div>
+                            <div class="commissionDetails">
+                                <p class="commissionTitle">Ref sheet</p>
+                                <p class="commissionCost">
+                                    <span class="commissionMoney">$40 - $80</span>
+                                    <span class="commissionCostInfo">*</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="commissionContainer">
+                            <div class="commissionImageContainer">
+                                <img src="img/commissions/eye.png" />
+                            </div>
+                            <div class="commissionDetails">
+                                <p class="commissionTitle">Eye render</p>
+                                <p class="commissionCost">
+                                    <span class="commissionMoney">flat $30</span>
+                                    <span class="commissionCostInfo">*</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <p>Commission info, including pricing and contact methods below.</p>
+                    <p>Button to open modal to show TOS and payment info.</p> -->
                     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+                    <template id="galleryImageTemplate">
+                        <div>
+                            <div>
+                                <img data-id="image" />
+                            </div>
+                            <div>
+                                <p data-id="title">Stickers</p>
+                                <p data-id="amount"></p>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </section>
 
