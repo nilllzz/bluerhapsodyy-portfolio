@@ -74,10 +74,51 @@ document.addEventListener("scroll", (e) => {
 // #endregion
 // ------------------------------------------------------------------------------------------------
 
-function setupGallery() {
-    const galleryImageTemplateEl = document.getElementById("galleryImageTemplate");
+function loadCommissionTypes() {
+    const templateEl = document.getElementById("commissionTypeTemplate");
+    const commissionTypesEl = document.getElementById("commissionTypes");
 
-    // const galleryImage =
+    let i = 0;
+
+    for (const commissionType of commissionTypes) {
+        const clone = templateEl.content.cloneNode(true);
+
+        const imgEl = clone.querySelector("img");
+        imgEl.src = `img/commissions/${commissionType.imgUrl}`;
+
+        const aEl = imgEl.parentElement;
+        aEl.href = `commission?type=${commissionType.id}`;
+
+        const titleEl = clone.querySelector(".commissionTitle");
+        titleEl.innerText = commissionType.title;
+
+        const moneyEl = clone.querySelector(".commissionMoney");
+        moneyEl.innerText = commissionType.money;
+
+        if (commissionType.doCostInfo) {
+            const costInfoEl = clone.querySelector(".commissionCostInfo");
+            costInfoEl.innerText = "*";
+        }
+
+        const smallEl = clone.querySelector(".commissionSmall");
+        if (commissionType.small) {
+            smallEl.innerText = commissionType.small;
+        } else {
+            smallEl.remove();
+        }
+
+        if (Math.floor(i / 2) % 2 === 1) {
+            clone
+                .querySelector(".commissionContainer")
+                .classList.add("commissionContainerInverted");
+        }
+
+        const container = clone.querySelector(".commissionContainer");
+        container.setAttribute("data-index", i.toString());
+        container.setAttribute("data-type", commissionType.id);
+
+        commissionTypesEl.appendChild(clone);
+        i++;
+    }
 }
-
-setupGallery();
+loadCommissionTypes();
