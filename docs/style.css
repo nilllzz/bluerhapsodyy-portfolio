@@ -1,50 +1,7 @@
 /* #region Common */
 
-@font-face {
-    font-family: "Title";
-    src: url("./fonts/dynapuff.ttf");
-}
-
-@font-face {
-    font-family: "Handwritten";
-    src: url("./fonts/handwritten.ttf");
-}
-
 :root {
-    --color-kip-white: #f0f0f0;
-    --color-kip-purple: #634f96;
-    --color-kip-dark1: #2a2e31;
-    --color-kip-dark2: #3d4045;
-    --color-kip-dark3: #515467;
-    --color-kip-dark4: #747b98;
-    --color-kip-blue: #5562ff;
-    --color-kip-hotpink: #fe2260;
-
-    --footer-height: 200px;
     --header-height: 54px;
-}
-
-::selection {
-    color: var(--color-kip-white);
-    background-color: var(--color-kip-purple);
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-
-    font-family: "Title";
-    color: var(--color-kip-white);
-
-    background-color: var(--color-kip-dark1);
-    background-image: url("./img/bg.png");
-}
-
-a {
-    color: var(--color-kip-purple);
 }
 
 nav {
@@ -110,65 +67,6 @@ nav > ul > li.active > a {
 
 nav > ul > li.active:hover > a {
     color: color-mix(in srgb, var(--color-kip-purple) 50%, transparent 50%);
-}
-
-section {
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-h2 {
-    font-size: 32px;
-    color: var(--color-kip-purple);
-
-    -webkit-text-stroke: 3px var(--color-kip-white);
-    paint-order: stroke fill;
-
-    /* Scroll above the header element */
-    scroll-margin-top: 120px;
-    filter: drop-shadow(0 10px 2px rgba(0, 0, 0, 0.5));
-
-    margin-top: 48px;
-}
-
-.sectionContent {
-    width: 100%;
-    max-width: 1200px;
-
-    padding-left: 20px;
-    padding-right: 20px;
-
-    padding-bottom: 48px;
-}
-
-.sectionBlack {
-    background-color: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5px);
-}
-
-main > section:last-child {
-    /* Set the minimum height of the last section so the header element can properly be scrolled to the top */
-    /* Add some extra padding above the section to make it look more organic. */
-    min-height: calc(100vh - var(--footer-height) - var(--header-height) - 40px);
-}
-
-.iconButton {
-    color: var(--color-kip-purple);
-    -webkit-text-stroke: 3px var(--color-kip-white);
-    paint-order: stroke fill;
-    display: inline-block;
-    filter: drop-shadow(0 0 10px black);
-
-    transition: transform 0.1s ease;
-}
-
-.iconButton:hover {
-    transform: scale(1.25);
-}
-
-.iconButton:active {
-    transform: scale(1.05);
 }
 
 @media (max-width: 800px) {
@@ -328,13 +226,6 @@ main > section:last-child {
     width: 100%;
 }
 
-.card {
-    background-color: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5px);
-    padding: 16px;
-    border-radius: 12px;
-}
-
 .commissionContainer {
     display: flex;
     gap: 16px;
@@ -353,7 +244,7 @@ main > section:last-child {
     background-color: var(--color-kip-dark4);
 
     transition: border-color 0.1s ease, background-color 0.1s ease, transform 0.1s ease,
-        border-radius 0.1s ease;
+        border-radius 0.1s ease, filter 0.25s ease;
 }
 
 .commissionImageContainer:hover {
@@ -361,6 +252,7 @@ main > section:last-child {
     background-color: var(--color-kip-purple);
     transform: scale(1.25);
     border-radius: 16px;
+    filter: drop-shadow(0 0 10px var(--color-kip-purple));
 }
 
 .commissionContainerInverted {
@@ -439,58 +331,3 @@ main > section:last-child {
 }
 
 /* #endregion Commissions */
-
-/* #region Footer */
-
-.lastContentSectionGradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    z-index: -1;
-
-    background: linear-gradient(to top, rgba(15, 15, 15, 1), rgba(15, 15, 15, 0));
-}
-
-footer > section {
-    height: var(--footer-height);
-}
-
-footer .sectionContent {
-    position: relative;
-    overflow: hidden;
-}
-
-.footerGoober {
-    position: absolute;
-    width: 150px;
-    bottom: -50%;
-    right: 0;
-
-    filter: saturate(0.5);
-    transition: transform 0.25s ease-in-out, filter 0.25s ease-in-out;
-}
-
-.footerGoober:hover {
-    filter: saturate(1);
-    transform: translateY(-55%) rotateZ(-2deg);
-}
-
-.footerGoober:active {
-    filter: saturate(1);
-    transform: translateY(-55%) scale(0.9) rotateZ(2deg);
-}
-
-.authorCredit > * {
-    vertical-align: middle;
-}
-
-.authorCredit > a {
-    font-family: "Handwritten";
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-/* #endregion Footer */

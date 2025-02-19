@@ -1,5 +1,13 @@
 /**
- * @typedef {{id:string,imgUrl:string,title:string,money:string,doCostInfo:boolean,small?:string}} CommissionType
+ * @typedef {{
+ *  id:string,
+ *  imgUrl:string,
+ *  title:string,
+ *  money:string,
+ *  doCostInfo:boolean,
+ *  small?:string,
+ *  details: string[],
+ * }} CommissionType
  */
 
 /**
@@ -26,6 +34,10 @@ const commissionTypes = [
         money: "$15",
         imgUrl: "meme.png",
         doCostInfo: true,
+        details: [
+            "A 'Meme' commission is a draw-over of an existing meme or template with your character(s).",
+            "The price is for a single character, additional characters are $5 each.",
+        ],
     },
     {
         id: "rendered-full-with-background",

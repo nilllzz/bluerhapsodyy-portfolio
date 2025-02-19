@@ -87,7 +87,7 @@ function loadCommissionTypes() {
         imgEl.src = `img/commissions/${commissionType.imgUrl}`;
 
         const aEl = imgEl.parentElement;
-        aEl.href = `commission?type=${commissionType.id}`;
+        aEl.href = `commission/?type=${commissionType.id}`;
 
         const titleEl = clone.querySelector(".commissionTitle");
         titleEl.innerText = commissionType.title;
