@@ -122,3 +122,51 @@ function loadCommissionTypes() {
     }
 }
 loadCommissionTypes();
+
+function loadGallery() {
+    const galleryTemplateEl = document.getElementById("galleryImageTemplate");
+
+    for (const galleryImage of galleryImages) {
+        const clone = galleryTemplateEl.content.cloneNode(true);
+
+        const imageEl = clone.querySelector(".galleryImage");
+        imageEl.style.backgroundImage = `url(img/gallery/${galleryImage.imgUrl})`;
+
+        if (galleryImage.aspectRatio) {
+            const container = clone.querySelector(".galleryImageContainer");
+            container.style.gridColumn = `span ${galleryImage.aspectRatio.x}`;
+            container.style.gridRow = `span ${galleryImage.aspectRatio.y}`;
+        }
+
+        const titleEl = clone.querySelector("[data-id='title']");
+        titleEl.innerText = galleryImage.title;
+
+        const peopleEl = clone.querySelector("[data-id='people']");
+        if (galleryImage.people && galleryImage.people.length > 0) {
+            const iconEl = document.createElement("i");
+            iconEl.classList.add("bi", "bi-person-fill");
+            iconEl.title = "People in this image";
+            peopleEl.appendChild(iconEl);
+
+            for (const person of galleryImage.people) {
+                const aEl = document.createElement("a");
+                aEl.innerText = person.name;
+                aEl.href = person.url;
+                aEl.target = "_blank";
+                aEl.rel = "noopener noreferrer";
+                aEl.style.color = "var(--color-kip-white)";
+                peopleEl.appendChild(aEl);
+            }
+        } else {
+            peopleEl.remove();
+        }
+
+        document.getElementById("galleryContainer").appendChild(clone);
+    }
+}
+loadGallery();
+
+function toggleGalleryContentVisibility(e) {
+    const contentEl = e.target.parentElement.querySelector(".galleryImageContent");
+    contentEl.classList.toggle("open");
+}
