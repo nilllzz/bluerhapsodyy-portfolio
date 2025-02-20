@@ -235,13 +235,23 @@
                         >.
                     </p>
 
-                    <div class="gallery" id="galleryContainer"></div>
+                    <div class="gallery closed" id="galleryParent">
+                        <div class="galleryClosedOverlay">
+                            <button
+                                class="button"
+                                onclick="onClickExpandGallery()"
+                                title="Expand Gallery"
+                            >
+                                <i class="bi bi-chevron-down"></i>
+                                Expand
+                                <i class="bi bi-chevron-down"></i>
+                            </button>
+                        </div>
+                        <div class="galleryContainer" id="galleryContainer"></div>
+                    </div>
                     <template id="galleryImageTemplate">
                         <div class="galleryImageContainer">
-                            <div
-                                class="galleryImage"
-                                onclick="toggleGalleryContentVisibility(event)"
-                            ></div>
+                            <div class="galleryImage"></div>
                             <div class="galleryImageContent">
                                 <div data-id="title"></div>
                                 <div data-id="people" class="galleryImagePeople"></div>

@@ -65,5 +65,9 @@ const galleryImages = [
     {
         imgUrl: "Untitled209_20210812015109.png",
         title: "Lilith",
+        aspectRatio: {
+            x: 4,
+            y: 4,
+        },
     },
 ];

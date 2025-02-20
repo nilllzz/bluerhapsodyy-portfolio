@@ -166,7 +166,7 @@ function loadGallery() {
 }
 loadGallery();
 
-function toggleGalleryContentVisibility(e) {
-    const contentEl = e.target.parentElement.querySelector(".galleryImageContent");
-    contentEl.classList.toggle("open");
+function onClickExpandGallery() {
+    const galleryParentEl = document.getElementById("galleryParent");
+    galleryParentEl.classList.toggle("closed");
 }

@@ -117,6 +117,41 @@ main > section:last-child {
     border-radius: 12px;
 }
 
+.button {
+    color: var(--color-kip-white);
+    font-size: 20px;
+    text-decoration: none;
+
+    background-color: rgba(100, 100, 100, 0.5);
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(160, 160, 160, 0.75);
+    border-radius: 24px;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    backdrop-filter: blur(2px);
+
+    transition: background-color 0.1s ease;
+
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: rgba(50, 50, 50, 0.5);
+}
+
+.button:active {
+    background-color: rgba(15, 15, 15, 0.5);
+}
+
+.button:focus {
+    border-color: color-mix(in srgb, var(--color-kip-blue) 90%, transparent 10%);
+}
+
 /* #region Footer */
 
 .lastContentSectionGradient {
