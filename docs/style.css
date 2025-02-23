@@ -408,7 +408,6 @@ nav > ul > li.active:hover > a {
 
     transform: translateY(100%);
 
-    /* background-color: rgba(0, 0, 0, 0.5); */
     background-color: color-mix(in srgb, var(--color-kip-dark1) 60%, transparent 20%);
     backdrop-filter: blur(6px);
 

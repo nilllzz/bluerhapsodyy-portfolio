@@ -123,10 +123,10 @@ function loadCommissionTypes() {
 }
 loadCommissionTypes();
 
-function loadGallery() {
+function loadGallery(lazy) {
     const galleryTemplateEl = document.getElementById("galleryImageTemplate");
 
-    for (const galleryImage of galleryImages) {
+    for (const galleryImage of galleryImages.filter((x) => x.lazy == lazy)) {
         const clone = galleryTemplateEl.content.cloneNode(true);
 
         const imageEl = clone.querySelector(".galleryImage");
@@ -164,9 +164,10 @@ function loadGallery() {
         document.getElementById("galleryContainer").appendChild(clone);
     }
 }
-loadGallery();
+loadGallery(false);
 
 function onClickExpandGallery() {
     const galleryParentEl = document.getElementById("galleryParent");
     galleryParentEl.classList.toggle("closed");
+    loadGallery(true);
 }
