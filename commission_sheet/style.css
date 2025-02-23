@@ -1,0 +1,209 @@
+body {
+    background-image: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    background-image: url("../docs/img/bg.png");
+    width: 1280px;
+    height: 720px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+h1 {
+    margin-top: 8px;
+    margin-left: 170px;
+
+    font-size: 36px;
+    color: var(--color-kip-purple);
+
+    -webkit-text-stroke: 3px var(--color-kip-white);
+    paint-order: stroke fill;
+
+    filter: drop-shadow(0 0 12px var(--color-kip-purple));
+}
+
+.commissionTypes {
+    display: flex;
+    gap: 32px;
+
+    padding-left: 32px;
+    padding-right: 32px;
+
+    justify-content: space-evenly;
+}
+
+.commissionType {
+    height: 500px;
+
+    position: relative;
+
+    flex: 1;
+}
+
+.commissionTypeBackground {
+    z-index: 0;
+    position: absolute;
+
+    border-radius: 12px;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(18, 19, 20, 0.75);
+
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 30%,
+        rgba(0, 0, 0, 0.5) 70%,
+        rgba(0, 0, 0, 0) 100%
+    );
+
+    backdrop-filter: blur(10px);
+}
+
+.commissionTypeContent {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    color: white;
+    -webkit-text-stroke: initial;
+    paint-order: initial;
+    filter: none;
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+
+    filter: drop-shadow(0 0 8px black);
+
+    -webkit-text-stroke: 2px var(--color-kip-dark1);
+    paint-order: stroke fill;
+
+    font-size: 40px;
+}
+
+.commissionTypeContent .images {
+    height: 280px;
+    width: 280px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.commissionTypeContent .images > img {
+    filter: drop-shadow(4px 4px 4px black);
+}
+
+.prices {
+    margin-top: 12px;
+
+    list-style-type: none;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.prices .priceName {
+    font-size: 20px;
+
+    color: var(--color-kip-white);
+    -webkit-text-stroke: 1px var(--color-kip-dark1);
+    paint-order: stroke fill;
+}
+
+.prices .priceAmount {
+    font-size: 40px;
+
+    display: inline-block;
+    padding-left: 8px;
+
+    color: var(--color-kip-blue);
+    -webkit-text-stroke: 3px var(--color-kip-white);
+    paint-order: stroke fill;
+}
+
+.prices .priceName small {
+    font-size: 12px;
+    color: var(--color-kip-dark4);
+}
+
+.lilguyContainer {
+    position: relative;
+    width: 280px;
+}
+
+.lilguy {
+    margin-left: 30px;
+    width: 300px;
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--color-kip-purple) 40%, transparent 60%));
+}
+
+.thisisme {
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    width: 100px;
+    filter: drop-shadow(0 0 10px color-mix(in srgb, var(--color-kip-purple) 80%, transparent 20%));
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80px;
+
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    gap: 64px;
+
+    padding: 12px;
+    padding-left: 48px;
+    box-sizing: border-box;
+
+    font-size: 20px;
+}
+
+.footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footerSmall {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+
+    font-size: 9px;
+
+    text-align: end;
+}
+
+.footerSmall > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    color: rgb(150, 150, 150);
+}
