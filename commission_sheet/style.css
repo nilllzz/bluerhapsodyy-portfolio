@@ -79,7 +79,7 @@ h1 {
 }
 
 h2 {
-    color: white;
+    color: var(--color-kip-white);
     -webkit-text-stroke: initial;
     paint-order: initial;
     filter: none;

@@ -1,0 +1,114 @@
+.gallery {
+    position: relative;
+}
+
+.galleryContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-auto-rows: 100px;
+    gap: 16px;
+
+    width: 100%;
+
+    justify-content: center;
+}
+
+.gallery.closed .galleryContainer {
+    max-height: 400px;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+
+    pointer-events: none;
+}
+
+.galleryClosedOverlay {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+
+    padding-bottom: 32px;
+
+    display: none;
+    justify-content: center;
+    align-items: end;
+}
+
+.gallery.closed .galleryClosedOverlay {
+    display: flex;
+}
+
+.galleryImageContainer {
+    grid-column: span 2;
+    grid-row: span 2;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+    border-width: 4px;
+    border-color: var(--color-kip-dark4);
+    border-style: solid;
+    border-radius: 8px;
+
+    position: relative;
+}
+
+.galleryImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+
+    transition: transform 1.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    box-shadow: inset 0 0 10px color-mix(in srgb, var(--color-kip-purple) 80%, transparent 20%);
+}
+
+.galleryImageContent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    transform: translateY(100%);
+
+    background-color: color-mix(in srgb, var(--color-kip-dark1) 60%, transparent 20%);
+    backdrop-filter: blur(6px);
+
+    font-size: 12px;
+    padding: 8px;
+
+    transition: transform 0.1s ease;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.galleryImageContainer:hover .galleryImageContent {
+    transform: translateY(0);
+}
+
+.galleryImageContainer:hover .galleryImage {
+    transform: scale(1.05);
+}
+
+.galleryImagePeople {
+    display: flex;
+    gap: 8px;
+}
+
+@media (max-width: 1200px) {
+    .galleryImageContainer {
+        grid-column: span 2 !important;
+        grid-row: span 2 !important;
+    }
+
+    .galleryImageContent {
+        transform: translateY(0);
+    }
+}

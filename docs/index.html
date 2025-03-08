@@ -33,6 +33,10 @@
         <meta property="twitter:site" content="@BRhapsodyy" />
         <meta property="twitter:creator" content="@BRhapsodyy" />
 
+        <link rel="preload" href="img/hero.jpg" as="image" />
+        <link rel="preload" href="fonts/fontawesome.woff2" as="font" />
+        <link rel="preload" href="fonts/handwritten.ttf" as="font" />
+        <link rel="preload" href="fonts/dynapuff.ttf" as="font" />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -40,6 +44,7 @@
         <link rel="stylesheet" href="common.css" />
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="fontawesome.css" />
+        <link rel="stylesheet" href="gallery.css" />
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
     </head>
 
@@ -129,7 +134,7 @@
                 </div>
             </section>
 
-            <section>
+            <!-- <section>
                 <div class="firstContentSectionGradient"></div>
 
                 <div class="sectionContent">
@@ -213,7 +218,44 @@
                         </ul>
                     </div>
                 </div>
+            </section> -->
+
+            <section>
+                <div class="firstContentSectionGradient"></div>
+                <div class="sectionContent">
+                    <h2 id="commissions">Commissions</h2>
+                    <p>
+                        These are the different types of commissions I accept. Contact me for
+                        details.
+                    </p>
+                </div>
             </section>
+            <section>
+                <template id="commissionSlateTemplate">
+                    <div class="commissionSlate" onclick="onClickCommissionSlate(this)">
+                        <div class="commissionSlateBackground"></div>
+                        <div class="commissionSlateContent">
+                            <img data-id="image" />
+                            <div class="commissionTitle" data-id="title"></div>
+                            <div class="commissionPrices" data-id="pricing"></div>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="commissionSlates" id="commissionSlates"></div>
+            </section>
+
+            <dialog
+                id="commissionDetailsDialog"
+                class="commissionDetailsDialog"
+                onclose="onCommissionDetailsDialogClose()"
+            >
+                <div id="commissionDetailsDialogSlateTarget"></div>
+                <div class="card commissionDetails">
+                    <h2 data-details-dialog-title="1"></h2>
+                    <div id="commissionDetailModalDetails"></div>
+                </div>
+            </dialog>
 
             <section class="sectionBlack">
                 <div class="sectionContent">

@@ -121,53 +121,221 @@ function loadCommissionTypes() {
         i++;
     }
 }
-loadCommissionTypes();
+// loadCommissionTypes();
 
-function loadGallery(lazy) {
-    const galleryTemplateEl = document.getElementById("galleryImageTemplate");
-
-    for (const galleryImage of galleryImages.filter((x) => x.lazy == lazy)) {
-        const clone = galleryTemplateEl.content.cloneNode(true);
-
-        const imageEl = clone.querySelector(".galleryImage");
-        imageEl.style.backgroundImage = `url(img/gallery/${galleryImage.imgUrl})`;
-
-        if (galleryImage.aspectRatio) {
-            const container = clone.querySelector(".galleryImageContainer");
-            container.style.gridColumn = `span ${galleryImage.aspectRatio.x}`;
-            container.style.gridRow = `span ${galleryImage.aspectRatio.y}`;
-        }
-
-        const titleEl = clone.querySelector("[data-id='title']");
-        titleEl.innerText = galleryImage.title;
-
-        const peopleEl = clone.querySelector("[data-id='people']");
-        if (galleryImage.people && galleryImage.people.length > 0) {
-            const iconEl = document.createElement("i");
-            iconEl.classList.add("bi", "bi-person-fill");
-            iconEl.title = "People in this image";
-            peopleEl.appendChild(iconEl);
-
-            for (const person of galleryImage.people) {
-                const aEl = document.createElement("a");
-                aEl.innerText = person.name;
-                aEl.href = person.url;
-                aEl.target = "_blank";
-                aEl.rel = "noopener noreferrer";
-                aEl.style.color = "var(--color-kip-white)";
-                peopleEl.appendChild(aEl);
-            }
-        } else {
-            peopleEl.remove();
-        }
-
-        document.getElementById("galleryContainer").appendChild(clone);
-    }
-}
-loadGallery(false);
+loadGallery(indexGalleryImages, false);
 
 function onClickExpandGallery() {
     const galleryParentEl = document.getElementById("galleryParent");
     galleryParentEl.classList.toggle("closed");
-    loadGallery(true);
+    loadGallery(indexGalleryImages, true);
 }
+
+/**
+ * @typedef {{name?:string,nameSmall?:string,amount:string}} CommissionTypePricing
+ * @typedef {{id:string,title:string,imgUrl:string,pricing:CommissionTypePricing[],details?:string[]}} CommissionType2
+ */
+
+/**
+ * @type {CommissionType2[]}
+ */
+const commissionTypes2 = [
+    {
+        id: "stickers",
+        title: "Stickers",
+        imgUrl: "stickers.gif",
+        pricing: [
+            {
+                name: "Simple",
+                amount: "$20&nbsp;&nbsp;",
+            },
+            {
+                name: "Animated",
+                amount: "$30+",
+            },
+        ],
+        details: [
+            "'Simple' stickers are a single character without a background",
+            "'Animated' stickers are at least two frames, the more frames the higher the price",
+        ],
+    },
+    {
+        id: "ref-sheet",
+        title: "Ref Sheet",
+        imgUrl: "refs.png",
+        pricing: [
+            {
+                nameSmall: "depends on detail",
+                amount: "$80",
+            },
+        ],
+    },
+    {
+        id: "rendered-bust",
+        title: "Rendered Bust",
+        imgUrl: "refs.png",
+        pricing: [
+            {
+                amount: "$40",
+            },
+            {
+                nameSmall: "w/ Background",
+                amount: "$60",
+            },
+        ],
+    },
+    {
+        id: "rendered-full",
+        title: "Rendered Full",
+        imgUrl: "refs.png",
+        pricing: [
+            {
+                amount: "$50",
+            },
+            {
+                nameSmall: "w/ Background",
+                amount: "$80",
+            },
+        ],
+    },
+    {
+        id: "meme",
+        title: "Meme",
+        imgUrl: "meme2.png",
+        pricing: [
+            {
+                nameSmall: "Redraw over base",
+                amount: "$15",
+            },
+        ],
+        details: [
+            "A 'Meme' commission is a draw-over of an existing meme or template with your character(s).",
+            "The price is for a single character, additional characters are $5 each.",
+        ],
+    },
+    {
+        id: "eye-render",
+        title: "Eye Render",
+        imgUrl: "eye2.png",
+        pricing: [
+            {
+                nameSmall: "experimental",
+                amount: "$30",
+            },
+        ],
+    },
+];
+
+function loadCommissionTypes2() {
+    const parentEl = document.getElementById("commissionSlates");
+    const templateEl = document.getElementById("commissionSlateTemplate");
+
+    for (const commissionType of commissionTypes2) {
+        const clone = templateEl.content.cloneNode(true);
+
+        const imgEl = clone.querySelector("[data-id='image']");
+        imgEl.src = `img/commissions/${commissionType.imgUrl}`;
+
+        const titleEl = clone.querySelector("[data-id='title']");
+        titleEl.innerText = commissionType.title;
+
+        const pricingParentEl = clone.querySelector("[data-id='pricing']");
+        for (const pricing of commissionType.pricing) {
+            const pricingEl = document.createElement("div");
+            const pricingNameEl = document.createElement("span");
+            pricingNameEl.className = "priceName";
+            if (pricing.name) {
+                const pricingNameText = document.createTextNode(pricing.name);
+                pricingNameEl.appendChild(pricingNameText);
+            }
+            if (pricing.nameSmall) {
+                const pricingNameSmallEl = document.createElement("small");
+                pricingNameSmallEl.innerText = pricing.nameSmall;
+                pricingNameEl.appendChild(pricingNameSmallEl);
+            }
+            pricingEl.appendChild(pricingNameEl);
+            const pricingAmountEl = document.createElement("span");
+            pricingAmountEl.className = "priceAmount";
+            pricingAmountEl.innerHTML = pricing.amount;
+            pricingEl.appendChild(pricingAmountEl);
+            pricingParentEl.appendChild(pricingEl);
+        }
+
+        clone.querySelector(".commissionSlate").setAttribute("data-id", commissionType.id);
+
+        parentEl.appendChild(clone);
+    }
+}
+loadCommissionTypes2();
+
+/**
+ * @param {HTMLDivElement} slateEl
+ */
+function onClickCommissionSlate(slateEl) {
+    const dialogEl = document.getElementById("commissionDetailsDialog");
+    if (dialogEl.open) {
+        return;
+    }
+
+    const commissionId = slateEl.getAttribute("data-id");
+    const commissionType = commissionTypes2.find((x) => x.id === commissionId);
+    if (!commissionType) {
+        return;
+    }
+
+    const slateTargetEl = document.getElementById("commissionDetailsDialogSlateTarget");
+    slateTargetEl.innerHTML = "";
+
+    const slateClone = slateEl.cloneNode(true);
+    slateClone.classList.add("active");
+    slateTargetEl.appendChild(slateClone);
+
+    const detailsEl = document.getElementById("commissionDetailModalDetails");
+    detailsEl.innerHTML = "";
+    if (commissionType.details) {
+        for (const detailLine of commissionType.details) {
+            const detailLineEl = document.createElement("p");
+            detailLineEl.innerText = detailLine;
+            detailsEl.appendChild(detailLineEl);
+        }
+        detailsEl.appendChild(document.createElement("hr"));
+    }
+
+    dialogEl.showModal();
+
+    // Set query to current commission id.
+    const url = new URL(window.location.href);
+    url.searchParams.set("commission", commissionId);
+    // Set url anchor to "commissions".
+    url.hash = "commissions";
+    window.history.replaceState({}, "", url);
+
+    const titleEl = document.querySelector("[data-details-dialog-title='1']");
+    titleEl.innerText = slateEl.querySelector("[data-id='title']").innerText;
+}
+
+function onCommissionDetailsDialogClose() {
+    // Remove the "commission" query param from the URL.
+    const url = new URL(window.location.href);
+    if (url.searchParams.has("commission")) {
+        url.searchParams.delete("commission");
+        window.history.replaceState({}, "", url);
+    }
+}
+
+function openCommissionDetailsDialogFromQuery() {
+    const url = new URL(window.location.href);
+    const commissionId = url.searchParams.get("commission");
+    if (!commissionId) {
+        return;
+    }
+
+    const slateEl = document.querySelector(`.commissionSlate[data-id="${commissionId}"]`);
+    if (!slateEl) {
+        return;
+    }
+
+    document.getElementById("commissions").scrollIntoView();
+    onClickCommissionSlate(slateEl);
+}
+openCommissionDetailsDialogFromQuery();

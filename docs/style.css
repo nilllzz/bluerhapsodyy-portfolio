@@ -332,115 +332,205 @@ nav > ul > li.active:hover > a {
 
 /* #endregion Commissions */
 
-.gallery {
-    position: relative;
-}
-
-.galleryContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 100px);
-    grid-auto-rows: 100px;
-    gap: 16px;
-
-    width: 100%;
-
-    justify-content: center;
-}
-
-.gallery.closed .galleryContainer {
-    max-height: 400px;
-    overflow: hidden;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-
-    pointer-events: none;
-}
-
-.galleryClosedOverlay {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-
-    padding-bottom: 32px;
-
-    display: none;
-    justify-content: center;
-    align-items: end;
-}
-
-.gallery.closed .galleryClosedOverlay {
+.commissionSlates {
     display: flex;
+    gap: 48px;
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    padding-left: 32px;
+    padding-right: 32px;
+
+    padding-top: 56px;
+    padding-bottom: 32px;
+    margin-bottom: 32px;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-kip-dark3) transparent;
 }
 
-.galleryImageContainer {
-    grid-column: span 2;
-    grid-row: span 2;
-
-    overflow: hidden;
-
-    box-sizing: border-box;
-    border-width: 4px;
-    border-color: var(--color-kip-dark4);
-    border-style: solid;
-    border-radius: 8px;
-
+.commissionSlate {
     position: relative;
-}
+    width: 320px;
+    max-width: calc(100vw - 64px);
+    min-height: 600px;
 
-.galleryImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 4px;
-    background-size: cover;
-    background-position: center;
-
-    transition: transform 1.25s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.galleryImageContent {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    transform: translateY(100%);
-
-    background-color: color-mix(in srgb, var(--color-kip-dark1) 60%, transparent 20%);
-    backdrop-filter: blur(6px);
-
-    font-size: 12px;
-    padding: 8px;
+    flex-shrink: 0;
 
     transition: transform 0.1s ease;
 
-    display: flex;
+    cursor: pointer;
+}
+
+.commissionSlate.active {
+    cursor: default;
+}
+
+.commissionSlate:hover {
+    transform: scale(1.01) translateY(-16px);
+}
+
+.commissionSlate:hover .commissionSlateBackground,
+.commissionSlate.active .commissionSlateBackground {
+    background-color: color-mix(in srgb, var(--color-kip-hotpink) 75%, transparent 25%);
+}
+
+.commissionSlateBackground {
+    z-index: 0;
+    position: absolute;
+    height: 600px;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 12px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 30%,
+        rgba(0, 0, 0, 0.5) 70%,
+        rgba(0, 0, 0, 0) 100%
+    );
+
+    backdrop-filter: blur(10px);
+    transition: background-color 0.1s ease;
+}
+
+.commissionSlateContent {
+    position: relative;
+    z-index: 1;
+}
+
+.commissionSlateContent > img {
+    display: block;
+    width: 400px;
+    height: 400px;
+    margin-left: -40px;
+    margin-top: -40px;
+
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.75));
+}
+
+.commissionTitle {
+    text-align: center;
+
+    filter: drop-shadow(0 0 8px black);
+
+    -webkit-text-stroke: 2px var(--color-kip-dark1);
+    paint-order: stroke fill;
+}
+
+.commissionPrices {
+    margin-top: 12px;
+
+    list-style-type: none;
+    padding-left: 8px;
+    padding-right: 8px;
+
+    display: inline-flex;
     flex-direction: column;
-    gap: 4px;
+    align-items: end;
 }
 
-.galleryImageContainer:hover .galleryImageContent {
-    transform: translateY(0);
-}
-
-.galleryImageContainer:hover .galleryImage {
-    transform: scale(1.05);
-}
-
-.galleryImagePeople {
+.commissionPrices > div {
     display: flex;
+    align-items: center;
     gap: 8px;
 }
 
-@media (max-width: 1200px) {
-    .galleryImageContainer {
-        grid-column: span 2 !important;
-        grid-row: span 2 !important;
+.commissionPrices .priceName {
+    font-size: 20px;
+
+    color: var(--color-kip-white);
+    -webkit-text-stroke: 1px var(--color-kip-dark1);
+    paint-order: stroke fill;
+}
+
+.commissionPrices .priceAmount {
+    font-size: 40px;
+
+    display: inline-block;
+    padding-left: 8px;
+
+    color: var(--color-kip-blue);
+    -webkit-text-stroke: 3px var(--color-kip-white);
+    paint-order: stroke fill;
+}
+
+.commissionPrices .priceName small {
+    font-size: 12px;
+    color: var(--color-kip-dark4);
+    -webkit-text-stroke: 1px var(--color-kip-dark1);
+}
+
+.commissionDetailsDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.commissionDetailsDialog {
+    background-color: var(--color-kip-dark1);
+    border-radius: 12px;
+    color: var(--color-kip-white);
+    border: none;
+
+    min-height: 600px;
+    width: 100%;
+    max-width: min(var(--content-width), 90vw);
+    padding: 16px;
+}
+
+.commissionDetailsDialog[open] {
+    display: flex;
+    gap: 24px;
+}
+
+#commissionDetailsDialogSlateTarget > div {
+    margin-top: 40px;
+
+    animation-name: dialog-slate-anim-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease;
+}
+
+.commissionDetails h2 {
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes dialog-slate-anim-in {
+    0% {
+        transform: translateY(40px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 800px) {
+    .commissionSlates {
+        gap: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
-    .galleryImageContent {
-        transform: translateY(0);
+    .commissionSlate {
+        max-width: calc(100vw - 32px);
+    }
+    .commissionSlateContent > img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        height: auto;
+        margin: 0;
+    }
+
+    .dialogContent {
+        flex-direction: column;
+        align-items: center;
     }
 }

@@ -5,8 +5,6 @@ function loadCommissionTypeData() {
     const commissionTypeId = (urlParams.get("type") || "").toLowerCase().trim();
     const commissionTypeData = commissionTypes.find((x) => x.id === commissionTypeId);
 
-    console.log({ commissionTypeData });
-
     if (!commissionTypeData) {
         // Redirect to index if no commission type set, or an invalid one is set.
         console.warn("No commission type found for input id.", { commissionTypeId });

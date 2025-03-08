@@ -1,0 +1,121 @@
+:root {
+    --header-height: 64px;
+}
+
+header {
+    background-image: url("../img/hero.jpg");
+    min-height: var(--header-height);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    box-sizing: border-box;
+    background-position: center;
+    overflow: hidden;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headerImage {
+    position: absolute;
+    display: block;
+    width: 140%;
+
+    filter: blur(15px) brightness(0.8) saturate(0.8);
+
+    z-index: 0;
+}
+
+header > nav {
+    z-index: 1;
+
+    width: 100%;
+    max-width: var(--content-width);
+
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header > nav > * {
+    flex: 1;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 32px;
+
+    color: var(--color-kip-purple);
+
+    -webkit-text-stroke: 3px var(--color-kip-white);
+    paint-order: stroke fill;
+}
+
+h1 > * {
+    vertical-align: middle;
+}
+
+.firstContentSectionGradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    z-index: -1;
+
+    background: linear-gradient(to bottom, rgba(15, 15, 15, 1), rgba(15, 15, 15, 0));
+}
+
+.blurred .galleryImage {
+    filter: blur(25px);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(25px);
+}
+
+dialog {
+    background-image: url("../img/bg.png");
+    color: var(--color-kip-white);
+
+    border-color: var(--color-kip-dark3);
+    border-width: 4px;
+    border-radius: 12px;
+
+    max-width: min(800px, 90%);
+    box-sizing: border-box;
+
+    filter: drop-shadow(0 0 10px var(--color-kip-dark3));
+
+    padding: 32px;
+}
+
+dialog > h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+dialog .button {
+    backdrop-filter: none;
+}
+
+@media (max-width: 800px) {
+    .navButton > span {
+        display: none;
+    }
+
+    .navButton {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 50%;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
