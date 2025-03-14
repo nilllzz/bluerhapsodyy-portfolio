@@ -208,3 +208,83 @@ footer .sectionContent {
 }
 
 /* #endregion Footer */
+
+/* #region Tooltip */
+
+*[data-tooltip-text] {
+    position: relative;
+}
+
+*[data-tooltip-text]::before {
+    content: attr(data-tooltip-text);
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100% + 10px);
+    width: 160px;
+
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    font-family: "Title";
+    font-size: 13px;
+    -webkit-text-stroke-width: 0;
+    text-align: center;
+
+    background-color: var(--color-kip-dark1);
+    color: var(--color-kip-white);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    border-radius: 12px;
+
+    display: none;
+
+    animation-name: tooltip-in-anim;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+*[data-tooltip-text]::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: calc(100% - 8px);
+
+    border: 10px solid var(--color-kip-dark1);
+    border-color: var(--color-kip-dark1) transparent transparent transparent;
+
+    display: none;
+
+    animation-name: tooltip-in-anim;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+}
+
+*[data-tooltip-text]:hover::before,
+*[data-tooltip-text]:hover::after,
+*[data-tooltip-text]:focus::before,
+*[data-tooltip-text]:focus::after {
+    display: block;
+
+    pointer-events: none;
+}
+
+@keyframes tooltip-in-anim {
+    0% {
+        transform: translateX(-50%) translateY(32px) scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+/* #endregion Tooltip */
