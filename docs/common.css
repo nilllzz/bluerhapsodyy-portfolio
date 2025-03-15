@@ -207,6 +207,26 @@ footer .sectionContent {
     transform: translateY(-55%) scale(0.9) rotateZ(2deg);
 }
 
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerContent > div {
+    flex: 1;
+}
+
+.footerLink {
+    color: var(--color-kip-white);
+    text-decoration: none;
+
+    transition: color 0.1s ease;
+}
+
+.footerLink:hover {
+    color: var(--color-kip-dark4);
+}
+
 /* #endregion Footer */
 
 /* #region Tooltip */
