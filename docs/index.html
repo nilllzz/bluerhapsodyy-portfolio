@@ -76,7 +76,6 @@
         </header>
 
         <main>
-            <script src="./commissionTypes.js"></script>
             <script src="./gallery.js"></script>
 
             <h1 id="top" style="margin: 0"></h1>
@@ -147,92 +146,6 @@
                 </div>
             </section>
 
-            <!-- <section>
-                <div class="firstContentSectionGradient"></div>
-
-                <div class="sectionContent">
-                    <h2 id="commissions">Commissions</h2>
-
-                    <p>
-                        These are the different types of commissions I accept. Contact me for
-                        details.
-                    </p>
-
-                    <div>
-                        <ul style="list-style-type: '* '">
-                            <li>Prices may vary with design complexity</li>
-                            <li>NSFW prices TBD</li>
-                            <li>All listed prices are in USD</li>
-                        </ul>
-                    </div>
-
-                    <div class="commissions" id="commissionTypes">
-                        <template id="commissionTypeTemplate">
-                            <div class="commissionContainer card">
-                                <div class="commissionImageContainer">
-                                    <a>
-                                        <img />
-                                    </a>
-                                </div>
-                                <div class="commissionDetails">
-                                    <p class="commissionTitle"></p>
-                                    <p class="commissionCost">
-                                        <span class="commissionMoney"></span>
-                                        <span class="commissionCostInfo"></span>
-                                    </p>
-                                    <p class="commissionSmall"></p>
-                                </div>
-                            </div>
-                        </template>
-                        <noscript>Please enable Javascript to see commission types.</noscript>
-                    </div>
-
-                    <div class="card">
-                        <h3>Information and TOS</h3>
-                        <ul>
-                            <li>Commissions typically take 1 to 6 weeks to complete.</li>
-                            <li>
-                                Updates will be shared weekly or upon request when I'm available.
-                            </li>
-                            <li>
-                                Feel free to reach out via Discord, Instagram, Bluesky or Email.
-                            </li>
-                            <li>
-                                I reserve the right to decline any commission that I'm not
-                                comfortable with.
-                            </li>
-                            <li>
-                                Payment is 50% upfront and 50% upon completion (unless otherwise
-                                agreed).
-                            </li>
-                            <li>Pricing is based on the complexity of the work.</li>
-                        </ul>
-                    </div>
-
-                    <div class="card">
-                        <h3>Payment Options</h3>
-
-                        <ul>
-                            <li>PayPal</li>
-                            <li>Zelle</li>
-                            <li>CashApp</li>
-                            <li>Venmo</li>
-                        </ul>
-                    </div>
-
-                    <div class="card">
-                        <h3>Find Me Online!</h3>
-
-                        <ul>
-                            <li><i class="fa fa-discord"></i> Discord server</li>
-                            <li><i class="fa fa-bluesky"></i> BlueSky</li>
-                            <li><i class="bi bi-instagram"></i> Instagram</li>
-                            <li><i class="bi bi-envelope-fill"></i> Email</li>
-                        </ul>
-                    </div>
-                </div>
-            </section> -->
-
             <section>
                 <div class="firstContentSectionGradient"></div>
                 <div class="sectionContent">
@@ -263,10 +176,22 @@
                 class="commissionDetailsDialog"
                 onclose="onCommissionDetailsDialogClose()"
             >
-                <div id="commissionDetailsDialogSlateTarget"></div>
-                <div class="card commissionDetails">
-                    <h2 data-details-dialog-title="1"></h2>
-                    <div id="commissionDetailModalDetails"></div>
+                <div class="commissionDetailsDialogContent">
+                    <div class="commissionDetailsDialogControls">
+                        <button
+                            class="closeDialogButton"
+                            title="Close Dialog (ESC)"
+                            onclick="closeCommissionDetailsDialog()"
+                        >
+                            CLOSE
+                        </button>
+                    </div>
+
+                    <div id="commissionDetailsDialogSlateTarget"></div>
+                    <div class="card commissionDetails">
+                        <h2 data-details-dialog-title="1"></h2>
+                        <div id="commissionDetailModalDetails"></div>
+                    </div>
                 </div>
             </dialog>
 

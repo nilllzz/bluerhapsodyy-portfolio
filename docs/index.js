@@ -74,55 +74,6 @@ document.addEventListener("scroll", (e) => {
 // #endregion
 // ------------------------------------------------------------------------------------------------
 
-function loadCommissionTypes() {
-    const templateEl = document.getElementById("commissionTypeTemplate");
-    const commissionTypesEl = document.getElementById("commissionTypes");
-
-    let i = 0;
-
-    for (const commissionType of commissionTypes) {
-        const clone = templateEl.content.cloneNode(true);
-
-        const imgEl = clone.querySelector("img");
-        imgEl.src = `img/commissions/${commissionType.imgUrl}`;
-
-        const aEl = imgEl.parentElement;
-        aEl.href = `commission/?type=${commissionType.id}`;
-
-        const titleEl = clone.querySelector(".commissionTitle");
-        titleEl.innerText = commissionType.title;
-
-        const moneyEl = clone.querySelector(".commissionMoney");
-        moneyEl.innerText = commissionType.money;
-
-        if (commissionType.doCostInfo) {
-            const costInfoEl = clone.querySelector(".commissionCostInfo");
-            costInfoEl.innerText = "*";
-        }
-
-        const smallEl = clone.querySelector(".commissionSmall");
-        if (commissionType.small) {
-            smallEl.innerText = commissionType.small;
-        } else {
-            smallEl.remove();
-        }
-
-        if (Math.floor(i / 2) % 2 === 1) {
-            clone
-                .querySelector(".commissionContainer")
-                .classList.add("commissionContainerInverted");
-        }
-
-        const container = clone.querySelector(".commissionContainer");
-        container.setAttribute("data-index", i.toString());
-        container.setAttribute("data-type", commissionType.id);
-
-        commissionTypesEl.appendChild(clone);
-        i++;
-    }
-}
-// loadCommissionTypes();
-
 loadGallery(indexGalleryImages, false);
 
 function onClickExpandGallery() {
@@ -139,7 +90,7 @@ function onClickExpandGallery() {
 /**
  * @type {CommissionType2[]}
  */
-const commissionTypes2 = [
+const commissionTypes = [
     {
         id: "stickers",
         title: "Stickers",
@@ -262,11 +213,11 @@ const commissionTypes2 = [
     },
 ];
 
-function loadCommissionTypes2() {
+function loadCommissionTypes() {
     const parentEl = document.getElementById("commissionSlates");
     const templateEl = document.getElementById("commissionSlateTemplate");
 
-    for (const commissionType of commissionTypes2) {
+    for (const commissionType of commissionTypes) {
         const clone = templateEl.content.cloneNode(true);
 
         const imgEl = clone.querySelector("[data-id='image']");
@@ -307,7 +258,7 @@ function loadCommissionTypes2() {
         parentEl.appendChild(clone);
     }
 }
-loadCommissionTypes2();
+loadCommissionTypes();
 
 /**
  * @param {HTMLDivElement} slateEl
@@ -319,7 +270,7 @@ function onClickCommissionSlate(slateEl) {
     }
 
     const commissionId = slateEl.getAttribute("data-id");
-    const commissionType = commissionTypes2.find((x) => x.id === commissionId);
+    const commissionType = commissionTypes.find((x) => x.id === commissionId);
     if (!commissionType) {
         return;
     }
@@ -353,6 +304,11 @@ function onClickCommissionSlate(slateEl) {
 
     const titleEl = document.querySelector("[data-details-dialog-title='1']");
     titleEl.innerText = slateEl.querySelector("[data-id='title']").innerText;
+}
+
+function closeCommissionDetailsDialog() {
+    const dialogEl = document.getElementById("commissionDetailsDialog");
+    dialogEl.close();
 }
 
 function onCommissionDetailsDialogClose() {
