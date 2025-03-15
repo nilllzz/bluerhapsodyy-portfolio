@@ -147,16 +147,18 @@ const commissionTypes2 = [
         pricing: [
             {
                 name: "Simple",
-                amount: "$20&nbsp;&nbsp;",
+                amount: "$25&nbsp;&nbsp;",
             },
             {
                 name: "Animated",
-                amount: "$30+",
+                amount: "$35+",
             },
         ],
         details: [
-            "'Simple' stickers are a single character without a background",
-            "'Animated' stickers are at least two frames, the more frames the higher the price",
+            "'Simple' stickers are a single character without a background.",
+            "+$5 for stickers I haven't done before.",
+            "",
+            "'Animated' stickers are at least two frames, $15 for each additional (unique) frame.",
         ],
     },
     {
@@ -165,37 +167,71 @@ const commissionTypes2 = [
         imgUrl: "refs.png",
         pricing: [
             {
-                nameSmall: "depends on detail",
-                amount: "$80",
+                name: "Simple",
+                amount: "$100&nbsp;&nbsp;",
             },
+            {
+                name: "Complex",
+                amount: "$150+",
+            },
+        ],
+        details: [
+            "Simple Ref sheets include a front and back view and paw/hand detail.",
+            "Complex Ref sheets come with everything a Simple Ref sheet has, plus a closeup of eye, paws, full body pose (with or without clothes), favorite drink and food, skull, and more.",
         ],
     },
     {
-        id: "rendered-bust",
-        title: "Rendered Bust",
+        id: "simple-color",
+        title: "Simple Color",
         imgUrl: "refs.png",
         pricing: [
             {
+                name: "Headshot",
+                amount: "$30",
+            },
+            {
+                name: "Bust",
                 amount: "$40",
             },
             {
-                nameSmall: "w/ Background",
-                amount: "$60",
-            },
-        ],
-    },
-    {
-        id: "rendered-full",
-        title: "Rendered Full",
-        imgUrl: "refs.png",
-        pricing: [
-            {
+                name: "Thigh up",
                 amount: "$50",
             },
             {
-                nameSmall: "w/ Background",
+                name: "Fullbody",
                 amount: "$80",
             },
+        ],
+        details: [
+            "Simple background free (outlines, color gradient, etc).",
+            "Complex background +$30.",
+        ],
+    },
+    {
+        id: "render",
+        title: "Rendered",
+        imgUrl: "refs.png",
+        pricing: [
+            {
+                name: "Headshot",
+                amount: "$40",
+            },
+            {
+                name: "Bust",
+                amount: "$50",
+            },
+            {
+                name: "Thigh up",
+                amount: "$60",
+            },
+            {
+                name: "Fullbody",
+                amount: "$100",
+            },
+        ],
+        details: [
+            "Simple background free (outlines, color gradient, etc).",
+            "Complex background +$30.",
         ],
     },
     {
@@ -205,7 +241,7 @@ const commissionTypes2 = [
         pricing: [
             {
                 nameSmall: "Redraw over base",
-                amount: "$15",
+                amount: "$20",
             },
         ],
         details: [
@@ -249,6 +285,11 @@ function loadCommissionTypes2() {
                 pricingNameEl.appendChild(pricingNameText);
             }
             if (pricing.nameSmall) {
+                if (pricing.name) {
+                    const pricingNameSmallSeparator = document.createElement("br");
+                    pricingNameEl.appendChild(pricingNameSmallSeparator);
+                }
+
                 const pricingNameSmallEl = document.createElement("small");
                 pricingNameSmallEl.innerText = pricing.nameSmall;
                 pricingNameEl.appendChild(pricingNameSmallEl);
