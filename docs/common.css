@@ -21,6 +21,8 @@
     --footer-height: 200px;
     --content-width: 1200px;
     --content-padding: 20px;
+
+    color-scheme: dark;
 }
 
 ::selection {
@@ -225,6 +227,17 @@ footer .sectionContent {
 
 .footerLink:hover {
     color: var(--color-kip-dark4);
+}
+
+.footerLink > i {
+    display: inline-block;
+    width: 20px;
+}
+
+.footerLink > i.fa-discord {
+    /* Try and visually align the icon a bit better */
+    margin-left: -2px;
+    margin-right: 2px;
 }
 
 /* #endregion Footer */

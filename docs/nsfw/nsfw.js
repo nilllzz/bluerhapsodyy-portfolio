@@ -27,8 +27,8 @@ function closeAgeGate() {
 function showAgeGate() {
     const hasDismissedAgeGate = localStorage.getItem(ageGateLocalStorageKey);
     if (hasDismissedAgeGate) {
-        // closeAgeGate();
-        // return;
+        closeAgeGate();
+        return;
     }
 
     ageGateDialogEl.showModal();
