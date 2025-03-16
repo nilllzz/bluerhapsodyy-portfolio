@@ -165,8 +165,10 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
     for (const galleryImage of galleryImages.filter((x) => x.lazy == lazy)) {
         const clone = galleryTemplateEl.content.cloneNode(true);
 
+        /** @type {HTMLAnchorElement} */
         const imageEl = clone.querySelector(".galleryImage");
         imageEl.style.backgroundImage = `url(${pathPrefix}img/gallery/${galleryImage.imgUrl})`;
+        imageEl.href = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
 
         if (galleryImage.aspectRatio) {
             const container = clone.querySelector(".galleryImageContainer");

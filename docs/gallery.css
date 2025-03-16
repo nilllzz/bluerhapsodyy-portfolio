@@ -62,6 +62,7 @@
     border-radius: 4px;
     background-size: cover;
     background-position: center;
+    display: block;
 
     transition: transform 1.25s cubic-bezier(0.075, 0.82, 0.165, 1);
 
