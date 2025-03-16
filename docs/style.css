@@ -141,6 +141,23 @@ nav > ul > li.active:hover > a {
     justify-content: center;
 }
 
+.heroSocialButtons a:hover i.fa-bluesky {
+    color: var(--color-brand-bluesky);
+}
+
+.heroSocialButtons a:hover i.fa-discord {
+    color: var(--color-brand-discord);
+}
+
+.heroSocialButtons a:hover i.bi-instagram {
+    color: var(--color-brand-instagram);
+    -webkit-text-stroke: 3px var(--color-kip-dark4);
+}
+
+.heroSocialButtons a:hover i.bi-envelope-fill {
+    color: var(--color-email);
+}
+
 .heroMarks {
     display: flex;
     flex-direction: column;
@@ -458,6 +475,67 @@ nav > ul > li.active:hover > a {
     }
 }
 
+.commissionSteps {
+    position: relative;
+}
+
+.commissionSteps::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    bottom: 24px;
+    left: 30px;
+
+    border-left-style: dotted;
+    border-left-width: 4px;
+    border-color: var(--color-kip-dark4);
+
+    z-index: 0;
+}
+
+.commissionStep {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    margin-bottom: 24px;
+
+    align-items: start;
+}
+
+.commissionStep > i.bi {
+    font-size: 32px;
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: #0b0c0c;
+    color: var(--color-kip-hotpink);
+}
+
+.commissionStep p {
+    margin: 0;
+    margin-bottom: 4px;
+    color: var(--color-kip-dark4);
+}
+
+.commissionStep a.button {
+    font-size: 16px;
+}
+
+.commissionStep h3 {
+    margin: 0;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding: 0;
+    font-size: 24px;
+}
+
+.commissionStepContact {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
 @media (min-width: 800px) {
     .commissionDetailsDialog {
         box-sizing: border-box;
@@ -465,13 +543,20 @@ nav > ul > li.active:hover > a {
         min-height: min(600px, 100vh);
     }
 
+    .commissionDetailsDialogContent {
+        max-height: min(800px - 32px, 95vh);
+        min-height: min(600px - 32px, 100vh);
+    }
+
     .commissionDetails {
-        max-height: calc(800px - 32px);
+        position: relative;
+        max-height: calc(100% - 80px);
         overflow: auto;
     }
 
     .commissionDetailsHeader {
         position: sticky;
+        z-index: 100;
         top: -16px;
         background-color: #0b0c0c;
         padding-top: 8px;

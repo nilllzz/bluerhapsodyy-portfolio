@@ -18,6 +18,11 @@
     --color-kip-blue: #5562ff;
     --color-kip-hotpink: #fe2260;
 
+    --color-brand-discord: #5865f2;
+    --color-brand-bluesky: #1083fe;
+    --color-brand-instagram: #feda77;
+    --color-email: #fe2260;
+
     --footer-height: 200px;
     --content-width: 1200px;
     --content-padding: 20px;
@@ -80,10 +85,10 @@ h2 {
 hr {
     border-style: solid;
     border-width: 1px;
-    border-color: var(--color-kip-white);
+    border-color: var(--color-kip-dark3);
 
     border-radius: 4px;
-    height: 6px;
+    height: 3px;
     background-color: var(--color-kip-purple);
 
     margin-left: -4px;
