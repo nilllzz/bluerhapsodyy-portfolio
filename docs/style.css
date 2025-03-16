@@ -16,7 +16,6 @@ nav {
     display: flex;
     justify-content: center;
 
-    /* background: linear-gradient(to bottom, rgba(36, 1, 1, 0.75), rgba(36, 1, 1, 0)); */
     backdrop-filter: blur(10px);
 }
 
@@ -227,119 +226,6 @@ nav > ul > li.active:hover > a {
     background: linear-gradient(to bottom, rgba(15, 15, 15, 1), rgba(15, 15, 15, 0));
 }
 
-.commissions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    width: 100%;
-}
-
-.commissionContainer {
-    display: flex;
-    gap: 16px;
-    max-width: 100%;
-}
-
-.commissionImageContainer {
-    position: relative;
-    flex: 1;
-    aspect-ratio: 1 / 1;
-
-    border-width: 4px;
-    border-color: var(--color-kip-dark4);
-    border-style: solid;
-    border-radius: 8px;
-    background-color: var(--color-kip-dark4);
-
-    transition: border-color 0.1s ease, background-color 0.1s ease, transform 0.1s ease,
-        border-radius 0.1s ease, filter 0.25s ease;
-}
-
-.commissionImageContainer:hover {
-    border-color: var(--color-kip-purple);
-    background-color: var(--color-kip-purple);
-    transform: scale(1.25);
-    border-radius: 16px;
-    filter: drop-shadow(0 0 10px var(--color-kip-purple));
-}
-
-.commissionContainerInverted {
-    text-align: right;
-    flex-direction: row-reverse;
-}
-
-.commissionImageContainer img {
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
-
-    transition: border-radius 0.1s ease;
-}
-
-.commissionImageContainer:hover img {
-    border-radius: 14px;
-}
-
-.commissionDetails {
-    flex: 1;
-}
-
-.commissionDetails > p {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.commissionTitle {
-    font-size: 28px;
-    color: var(--color-kip-white);
-}
-
-.commissionCost {
-    font-size: 24px;
-    color: var(--color-kip-white);
-}
-
-.commissionMoney {
-    color: var(--color-kip-blue);
-    -webkit-text-stroke: 3px var(--color-kip-white);
-    paint-order: stroke fill;
-}
-
-.commissionSmall {
-    font-size: 12px;
-    font-style: italic;
-    color: var(--color-kip-dark4);
-}
-
-.commissionSmall::before {
-    content: "(";
-}
-
-.commissionSmall::after {
-    content: ")";
-}
-
-@media (max-width: 800px) {
-    .commissions {
-        grid-template-columns: 1fr;
-    }
-
-    .commissionContainerInverted {
-        text-align: initial;
-        flex-direction: row;
-    }
-
-    .commissionTitle {
-        font-size: 20px;
-    }
-
-    .commissionCost {
-        font-size: 18px;
-    }
-}
-
-/* #endregion Commissions */
-
 .commissionSlates {
     display: flex;
     gap: 48px;
@@ -429,6 +315,8 @@ nav > ul > li.active:hover > a {
 
     filter: drop-shadow(0 0 8px black);
 
+    font-size: 28px;
+    color: var(--color-kip-white);
     -webkit-text-stroke: 2px var(--color-kip-dark1);
     paint-order: stroke fill;
 }
@@ -567,6 +455,10 @@ nav > ul > li.active:hover > a {
 }
 
 @media (max-width: 800px) {
+    .commissionTitle {
+        font-size: 20px;
+    }
+
     .commissionSlates {
         gap: 16px;
         padding-left: 16px;
@@ -597,3 +489,5 @@ nav > ul > li.active:hover > a {
         align-items: center;
     }
 }
+
+/* #endregion Commissions */
