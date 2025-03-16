@@ -141,6 +141,10 @@ nav > ul > li.active:hover > a {
     justify-content: center;
 }
 
+.heroSocialButtons a i {
+    transition: color 0.25s ease, -webkit-text-stroke 0.25s ease;
+}
+
 .heroSocialButtons a:hover i.fa-bluesky {
     color: var(--color-brand-bluesky);
 }
@@ -151,7 +155,7 @@ nav > ul > li.active:hover > a {
 
 .heroSocialButtons a:hover i.bi-instagram {
     color: var(--color-brand-instagram);
-    -webkit-text-stroke: 3px var(--color-kip-dark4);
+    -webkit-text-stroke-color: var(--color-kip-dark4);
 }
 
 .heroSocialButtons a:hover i.bi-envelope-fill {
