@@ -400,6 +400,10 @@ nav > ul > li.active:hover > a {
     animation-timing-function: ease;
 }
 
+.commissionDetails {
+    flex-grow: 1;
+}
+
 .commissionDetails h2 {
     margin: 0;
     padding: 0;
@@ -451,6 +455,30 @@ nav > ul > li.active:hover > a {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+@media (min-width: 800px) {
+    .commissionDetailsDialog {
+        max-height: 800px;
+    }
+
+    .commissionDetails {
+        max-height: calc(800px - 32px);
+        overflow: auto;
+    }
+
+    .commissionDetailsHeader {
+        position: sticky;
+        top: -16px;
+        background-color: #0b0c0c;
+        padding-top: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+        margin-left: -8px;
+        margin-right: -8px;
+        margin-bottom: -8px;
     }
 }
 
