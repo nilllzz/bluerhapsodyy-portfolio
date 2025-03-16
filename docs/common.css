@@ -201,7 +201,7 @@ footer .sectionContent {
 .footerGoober {
     position: absolute;
     width: 150px;
-    bottom: -50%;
+    bottom: -100px;
     right: 0;
 
     filter: saturate(0.5);
@@ -247,6 +247,16 @@ footer .sectionContent {
     /* Try and visually align the icon a bit better */
     margin-left: -2px;
     margin-right: 2px;
+}
+
+@media (max-width: 800px) {
+    footer > section {
+        height: auto;
+    }
+
+    footer .footerContent {
+        flex-direction: column;
+    }
 }
 
 /* #endregion Footer */
