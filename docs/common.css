@@ -3,11 +3,6 @@
     src: url("./fonts/dynapuff.ttf");
 }
 
-@font-face {
-    font-family: "Handwritten";
-    src: url("./fonts/handwritten.ttf");
-}
-
 :root {
     --color-kip-white: #f0f0f0;
     --color-kip-purple: #634f96;
