@@ -460,7 +460,9 @@ nav > ul > li.active:hover > a {
 
 @media (min-width: 800px) {
     .commissionDetailsDialog {
-        max-height: 800px;
+        box-sizing: border-box;
+        max-height: min(800px, 95vh);
+        min-height: min(600px, 100vh);
     }
 
     .commissionDetails {
