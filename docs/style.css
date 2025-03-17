@@ -479,6 +479,29 @@ nav > ul > li.active:hover > a {
     }
 }
 
+.commissionDetails h3 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    margin-top: 40px;
+    position: relative;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.commissionDetails h3::after {
+    content: "";
+    position: absolute;
+    left: auto;
+    width: 100%;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-top-color: var(--color-kip-dark4);
+    border-top-style: dotted;
+    border-top-width: 4px;
+
+    bottom: calc(1rem - 2px);
+}
+
 .commissionSteps {
     position: relative;
 }
@@ -525,7 +548,7 @@ nav > ul > li.active:hover > a {
     font-size: 16px;
 }
 
-.commissionStep h3 {
+.commissionStep h4 {
     margin: 0;
     margin-top: 4px;
     margin-bottom: 8px;
@@ -538,6 +561,34 @@ nav > ul > li.active:hover > a {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+}
+
+.dodonttable {
+    border-collapse: collapse;
+}
+
+.dodonttable th {
+    font-size: 20px;
+    padding-bottom: 4px;
+}
+
+.dodonttable thead tr th {
+    border-bottom: 2px solid var(--color-kip-white);
+}
+
+.dodonttable tbody tr > td:first-child {
+    border-right: 2px solid var(--color-kip-white);
+}
+
+.dodonttable td {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.dodonttable small {
+    color: var(--color-kip-dark4);
 }
 
 @media (min-width: 800px) {
@@ -569,7 +620,17 @@ nav > ul > li.active:hover > a {
         padding-bottom: 8px;
         margin-left: -8px;
         margin-right: -8px;
-        margin-bottom: -8px;
+        margin-bottom: -2px;
+    }
+
+    .commissionDetailsHeader::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -16px;
+        height: 16px;
+        background: linear-gradient(to bottom, #0b0c0c, transparent);
     }
 }
 

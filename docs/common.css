@@ -18,6 +18,9 @@
     --color-brand-instagram: #feda77;
     --color-email: #fe2260;
 
+    --color-positive: #84f584;
+    --color-negative: #e06a6a;
+
     --footer-height: 200px;
     --content-width: 1200px;
     --content-padding: 20px;
@@ -174,6 +177,14 @@ button.button {
 
 .button:focus {
     border-color: color-mix(in srgb, var(--color-kip-blue) 90%, transparent 10%);
+}
+
+.textPositive {
+    color: var(--color-positive);
+}
+
+.textNegative {
+    color: var(--color-negative);
 }
 
 /* #region Footer */
@@ -340,3 +351,27 @@ footer .sectionContent {
 }
 
 /* #endregion Tooltip */
+
+/* #region Dialog */
+
+dialog {
+    animation-name: dialog-anim-in;
+    animation-duration: 0.25s;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+}
+
+@keyframes dialog-anim-in {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.25;
+    }
+
+    100% {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+/* #endregion Dialog */

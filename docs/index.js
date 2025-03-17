@@ -290,7 +290,6 @@ function onClickCommissionSlate(slateEl) {
             detailLineEl.innerText = detailLine;
             detailsEl.appendChild(detailLineEl);
         }
-        detailsEl.appendChild(document.createElement("hr"));
     }
 
     dialogEl.showModal();
