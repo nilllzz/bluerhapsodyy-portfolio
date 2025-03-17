@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>BlueRhapsodyy Invoice</title>
+        <meta name="author" content="nilllzz" />
+    </head>
+    <body>
+        <style>
+            @media print {
+                input {
+                    border: none;
+                    appearance: textfield;
+                    padding: 0;
+                    margin: 0;
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: inherit;
+                }
+
+                select {
+                    border: none;
+                    appearance: none;
+                    padding: 0;
+                    margin: 0;
+                    font-family: "Times New Roman", Times, serif;
+                    font-size: inherit;
+                }
+
+                .noPrint {
+                    display: none;
+                }
+            }
+
+            section {
+                margin-bottom: 32px;
+            }
+
+            th {
+                text-transform: uppercase;
+                text-align: left;
+            }
+
+            .invoiceTable {
+                border-collapse: collapse;
+            }
+
+            .invoiceTable th {
+                padding-right: 32px;
+                border-bottom-style: solid;
+                border-bottom-width: 2px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .totalRow th {
+                border: none;
+                border-top-style: solid;
+                border-top-width: 2px;
+            }
+
+            .invoiceTable tbody tr td {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .invoiceTable tr td:first-child {
+                padding-left: 10px;
+            }
+        </style>
+
+        <header>
+            <h1>BlueRhapsodyy Invoice</h1>
+        </header>
+
+        <main>
+            <section style="float: right">
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label for="invoiceNo">Invoice no:&nbsp;</label>
+                                </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        id="invoiceNo"
+                                        placeholder="Current invoice number"
+                                        onblur="onBlurInvoiceNo(this)"
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Date:</td>
+                                <td>
+                                    <span id="dateTarget"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Issued to:&nbsp;</td>
+                                <td>
+                                    <input type="text" placeholder="Name or Username" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><br /></td>
+                            </tr>
+                            <tr>
+                                <td>Pay to:</td>
+                                <td>BlueRhapsodyy</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <select>
+                                        <option>PayPal</option>
+                                        <option>Zelle</option>
+                                        <option>Venmo</option>
+                                        <option>Cash App</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <table class="invoiceTable">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Unit price</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoiceRows">
+                        <template id="invoiceRowTemplate">
+                            <tr>
+                                <td>
+                                    <input
+                                        type="text"
+                                        list="commissionTypes"
+                                        placeholder="Commission or 'Deposit'"
+                                    />
+                                    <datalist id="commissionTypes">
+                                        <option value="Sticker (simple)"></option>
+                                        <option value="Sticker (animated)"></option>
+                                        <option value="Ref Sheet (simple)"></option>
+                                        <option value="Ref Sheet (complex)"></option>
+                                        <option value="Simple Color"></option>
+                                        <option value="Rendered"></option>
+                                        <option value="Meme"></option>
+                                        <option value="Eye Render"></option>
+                                        <option value="Deposit"></option>
+                                    </datalist>
+                                </td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        value="25"
+                                        onchange="onChangeQtyOrPrice(this)"
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        type="number"
+                                        value="1"
+                                        onchange="onChangeQtyOrPrice(this)"
+                                    />
+                                </td>
+                                <td>
+                                    <span>$25</span>
+                                    <button onclick="removeInvoiceRow(this)" class="noPrint">
+                                        -
+                                    </button>
+                                </td>
+                            </tr>
+                        </template>
+                        <tr class="addRow">
+                            <td colspan="4">
+                                <button onclick="addInvoiceRow()" class="noPrint">+</button>
+                            </td>
+                        </tr>
+                        <tr class="totalRow">
+                            <th>Total</th>
+                            <th></th>
+                            <th></th>
+                            <th><span id="totalPrice"></span></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <p>Please pay the above amount by <input type="text" id="payDate" /></p>
+                <p>
+                    For questions or concerns regarding this invoice, please contact me at
+                    <a href="mailto:contact@kip.art">contact@kip.art</a>.
+                </p>
+            </section>
+        </main>
+
+        <footer class="noPrint">
+            <button onclick="window.print()">Print or save as PDF</button>
+        </footer>
+
+        <script>
+            const now = new Date(Date.now());
+            const formattedDate = now.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+
+            window.document.title = `BlueRhapsodyy Invoice - ${formattedDate}`;
+
+            const dateTargetEl = document.getElementById("dateTarget");
+            dateTargetEl.innerText = formattedDate;
+
+            const payDateEl = document.getElementById("payDate");
+            const payDate = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+            payDateEl.value = payDate.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            });
+
+            function onBlurInvoiceNo(inputEl) {
+                /** @type {string} */
+                let v = inputEl.value;
+                if (v.match(/#\d{5}/i)) {
+                    return;
+                }
+                if (v.startsWith("#")) {
+                    v = v.substr(1);
+                }
+                if (!v.match(/\d{1,5}/i)) {
+                    return;
+                }
+                inputEl.value = `#${v.padStart(5, "0")}`;
+            }
+
+            /**
+             * @param {HTMLInputElement} inputEl
+             */
+            function onChangeQtyOrPrice(inputEl) {
+                const parent = inputEl.parentElement.parentElement;
+
+                const unitInputEl = parent.children[1].children[0];
+                const qtyInputEl = parent.children[2].children[0];
+
+                const unitPrice = parseFloat(unitInputEl.value);
+                const qty = parseInt(qtyInputEl.value, 10);
+
+                const total = unitPrice * qty;
+                const totalEl = parent.children[3].children[0];
+
+                if (total < 0) {
+                    totalEl.innerText = `-$${Math.abs(total)}`;
+                } else {
+                    totalEl.innerText = `$${total}`;
+                }
+
+                calculateInvoiceTotal();
+            }
+
+            function addInvoiceRow() {
+                const template = document.getElementById("invoiceRowTemplate");
+                const clone = template.content.cloneNode(true);
+
+                const targetEl = document.getElementById("invoiceRows");
+                targetEl.insertBefore(clone, targetEl.children[targetEl.children.length - 3]);
+
+                calculateInvoiceTotal();
+            }
+
+            function removeInvoiceRow(btnEl) {
+                btnEl.parentElement.parentElement.remove();
+                calculateInvoiceTotal();
+            }
+
+            function calculateInvoiceTotal() {
+                const rows = document.querySelectorAll("#invoiceRows tr");
+                let total = 0;
+
+                for (const row of rows) {
+                    if (row.classList.contains("totalRow") || row.classList.contains("addRow")) {
+                        continue;
+                    }
+
+                    const unitPriceEl = row.children[1].children[0];
+                    const qtyEl = row.children[2].children[0];
+
+                    const totalValue = parseFloat(unitPriceEl.value) * parseInt(qtyEl.value, 10);
+                    total += totalValue;
+                }
+
+                const totalPriceEl = document.getElementById("totalPrice");
+                totalPriceEl.innerText = `$${total}`;
+            }
+
+            addInvoiceRow();
+        </script>
+    </body>
+</html>
