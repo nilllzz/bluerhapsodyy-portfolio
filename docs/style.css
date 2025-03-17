@@ -667,6 +667,9 @@ nav > ul > li.active:hover > a {
     .commissionDetailsDialogContent {
         flex-direction: column;
         align-items: center;
+
+        /* Add spacing to the bottom for mobile browsers that position the controls over the bottom of the screen. */
+        padding-bottom: 7vh;
     }
 }
 
