@@ -502,6 +502,62 @@ nav > ul > li.active:hover > a {
     bottom: calc(1rem - 2px);
 }
 
+#commissionDetailModalExampleImages {
+    display: flex;
+    overflow-x: auto;
+    gap: 24px;
+    max-width: 100%;
+
+    padding-bottom: 24px;
+}
+
+.exampleImageContainer {
+    display: block;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    border-width: 4px;
+    border-color: var(--color-kip-dark4);
+    border-style: solid;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-kip-dark2);
+}
+
+.exampleImageContainer .exampleImage {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+
+    transition: transform 1.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    box-shadow: inset 0 0 10px color-mix(in srgb, var(--color-kip-dark1) 80%, transparent 20%);
+}
+
+.exampleImageContainer:hover .exampleImage {
+    transform: scale(1.05);
+}
+
+.exampleImageContainer .exampleImageContent {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 4px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
 .commissionSteps {
     position: relative;
 }
@@ -653,6 +709,10 @@ nav > ul > li.active:hover > a {
         aspect-ratio: 1/1;
         height: auto;
         margin: 0;
+    }
+
+    .commissionDetails {
+        max-width: 100%;
     }
 
     .commissionDetailsDialog {

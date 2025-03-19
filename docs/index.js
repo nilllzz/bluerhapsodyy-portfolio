@@ -84,17 +84,43 @@ function onClickExpandGallery() {
 
 /**
  * @typedef {{name?:string,nameSmall?:string,amount:string}} CommissionTypePricing
- * @typedef {{id:string,title:string,imgUrl:string,pricing:CommissionTypePricing[],details?:string[]}} CommissionType2
+ * @typedef {{id:string,title:string,imgUrl:string,pricing:CommissionTypePricing[],details?:string[],examples?:GalleryImage[]}} CommissionType
  */
 
 /**
- * @type {CommissionType2[]}
+ * @type {CommissionType[]}
  */
 const commissionTypes = [
     {
         id: "stickers",
         title: "Stickers",
-        imgUrl: "stickers.gif",
+        imgUrl: "stickers/index.gif",
+        examples: [
+            {
+                imgUrl: "stickers/example_0.png",
+                title: "Kipper Notes",
+            },
+            {
+                imgUrl: "stickers/example_1.png",
+                title: "Capri RAAAHH",
+            },
+            {
+                imgUrl: "stickers/example_2.png",
+                title: "Kylo Wailing",
+            },
+            {
+                imgUrl: "stickers/example_3.gif",
+                title: "Capri Nodding",
+            },
+            {
+                imgUrl: "stickers/example_4.png",
+                title: "Kylo Scheming",
+            },
+            {
+                imgUrl: "stickers/example_5.png",
+                title: "Kipper Hug",
+            },
+        ],
         pricing: [
             {
                 name: "Simple",
@@ -115,7 +141,25 @@ const commissionTypes = [
     {
         id: "ref-sheet",
         title: "Ref Sheet",
-        imgUrl: "refs.png",
+        imgUrl: "refs/index.png",
+        examples: [
+            {
+                imgUrl: "refs/example_3.png",
+                title: "Will",
+            },
+            {
+                imgUrl: "refs/example_0.jpg",
+                title: "Forest",
+            },
+            {
+                imgUrl: "refs/example_1.jpg",
+                title: "Kipper",
+            },
+            {
+                imgUrl: "refs/example_2.png",
+                title: "Capri",
+            },
+        ],
         pricing: [
             {
                 name: "Simple",
@@ -134,7 +178,7 @@ const commissionTypes = [
     {
         id: "simple-color",
         title: "Simple Color",
-        imgUrl: "refs.png",
+        imgUrl: "color/index.png",
         pricing: [
             {
                 name: "Headshot",
@@ -161,7 +205,7 @@ const commissionTypes = [
     {
         id: "render",
         title: "Rendered",
-        imgUrl: "refs.png",
+        imgUrl: "rendered/index.png",
         pricing: [
             {
                 name: "Headshot",
@@ -188,7 +232,13 @@ const commissionTypes = [
     {
         id: "meme",
         title: "Meme",
-        imgUrl: "meme2.png",
+        imgUrl: "meme/index.png",
+        examples: [
+            {
+                imgUrl: "meme/example_0.jpg",
+                title: "",
+            },
+        ],
         pricing: [
             {
                 nameSmall: "Redraw over base",
@@ -203,7 +253,17 @@ const commissionTypes = [
     {
         id: "eye-render",
         title: "Eye Render",
-        imgUrl: "eye2.png",
+        imgUrl: "eye/index.png",
+        examples: [
+            {
+                imgUrl: "eye/example_0.png",
+                title: "Kipper Eye",
+            },
+            {
+                imgUrl: "eye/example_1.png",
+                title: "Capri Eye",
+            },
+        ],
         pricing: [
             {
                 nameSmall: "experimental",
@@ -275,6 +335,7 @@ function onClickCommissionSlate(slateEl) {
         return;
     }
 
+    // Copy commission slate into the dialog.
     const slateTargetEl = document.getElementById("commissionDetailsDialogSlateTarget");
     slateTargetEl.innerHTML = "";
 
@@ -282,6 +343,7 @@ function onClickCommissionSlate(slateEl) {
     slateClone.classList.add("active");
     slateTargetEl.appendChild(slateClone);
 
+    // Fill details text with commission details.
     const detailsEl = document.getElementById("commissionDetailModalDetails");
     detailsEl.innerHTML = "";
     if (commissionType.details) {
@@ -290,6 +352,43 @@ function onClickCommissionSlate(slateEl) {
             detailLineEl.innerText = detailLine;
             detailsEl.appendChild(detailLineEl);
         }
+    }
+
+    // Load example iamges.
+    const examplesEl = document.getElementById("commissionDetailModalExamples");
+    const exampleImagesEl = document.getElementById("commissionDetailModalExampleImages");
+    exampleImagesEl.innerHTML = "";
+    if (commissionType.examples && commissionType.examples.length > 0) {
+        examplesEl.style.display = "block";
+
+        /** @type {HTMLTemplateElement} */
+        const exampleImageTemplate = document.getElementById(
+            "commissionDetailModalExampleImageTemplate"
+        );
+
+        for (const example of commissionType.examples) {
+            const exampleImageEl = exampleImageTemplate.content.cloneNode(true);
+
+            // Set image src and href.
+            /** @type {HTMLAnchorElement} */
+            const exampleImageAEl = exampleImageEl.querySelector("a");
+            exampleImageAEl.href = `img/commissions/${example.imgUrl}`;
+            exampleImageAEl.style.backgroundImage = `url(img/commissions/${example.imgUrl})`;
+
+            // Set
+            /** @type {HTMLDivElement} */
+            const exampleImageTitleEl = exampleImageEl.querySelector('[data-id="title"]');
+            if (example.title) {
+                exampleImageTitleEl.innerText = example.title;
+            } else {
+                exampleImageTitleEl.parentElement.remove();
+            }
+
+            exampleImagesEl.appendChild(exampleImageEl);
+        }
+    } else {
+        // Hide if no example images.
+        examplesEl.style.display = "none";
     }
 
     dialogEl.showModal();

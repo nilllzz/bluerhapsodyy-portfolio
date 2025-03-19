@@ -35,6 +35,12 @@
         <meta property="twitter:creator" content="@BRhapsodyy" />
 
         <link rel="preload" href="img/hero.jpg" as="image" />
+        <link rel="preload" href="img/commissions/color/index.png" as="image" />
+        <link rel="preload" href="img/commissions/eye/index.png" as="image" />
+        <link rel="preload" href="img/commissions/meme/index.png" as="image" />
+        <link rel="preload" href="img/commissions/refs/index.png" as="image" />
+        <link rel="preload" href="img/commissions/rendered/index.png" as="image" />
+        <link rel="preload" href="img/commissions/stickers/index.gif" as="image" />
         <link rel="preload" href="fonts/fontawesome.woff2" as="font" />
         <link rel="preload" href="fonts/dynapuff.ttf" as="font" />
         <link
@@ -187,6 +193,26 @@
                             <hr />
                         </div>
                         <div id="commissionDetailModalDetails"></div>
+                        <div id="commissionDetailModalExamples" style="display: none">
+                            <h3>Examples</h3>
+                            <p>
+                                Here's some select examples for this type of commission.
+                                <br />
+                                <small style="color: var(--color-kip-dark4)">
+                                    Scroll right to see more, click for larger image.
+                                </small>
+                            </p>
+
+                            <div id="commissionDetailModalExampleImages"></div>
+                            <template id="commissionDetailModalExampleImageTemplate">
+                                <div class="exampleImageContainer">
+                                    <a class="exampleImage" target="_blank"></a>
+                                    <div class="exampleImageContent">
+                                        <div data-id="title"></div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
                         <div>
                             <div>
                                 <h3>DOs & DON'Ts</h3>
