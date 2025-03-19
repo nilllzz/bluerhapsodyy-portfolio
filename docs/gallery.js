@@ -82,6 +82,21 @@ const indexGalleryImages = [
         title: "Lilith",
         lazy: true,
     },
+    {
+        imgUrl: "caprieye.png",
+        title: "Capri Eye",
+        people: [
+            {
+                name: "nilllzz",
+                url: "https://bsky.app/profile/nilllzz.dev",
+            },
+        ],
+        aspectRatio: {
+            x: 4,
+            y: 2,
+        },
+        lazy: true,
+    },
 ];
 
 /**
