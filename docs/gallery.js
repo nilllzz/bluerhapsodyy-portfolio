@@ -29,29 +29,23 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "example_72.png",
-        title: "Cool guy",
+        title: "Thingy...",
         people: [
             {
-                name: "Julian",
-                url: "https://juliandoes.art",
+                name: "Thingymabob",
+                url: "https://bsky.app/profile/thingyproto.bsky.social",
             },
         ],
         lazy: false,
     },
     {
         imgUrl: "Untitled209_20210812015109.png",
-        title: "Cool guy",
-        people: [
-            {
-                name: "Julian",
-                url: "https://juliandoes.art",
-            },
-        ],
+        title: "Lilith",
         lazy: false,
     },
     {
         imgUrl: "Untitled516_20240616200137.png",
-        title: "Cool guy",
+        title: "Drew my friend JulianDough in a fit i saw on Pinterest 🥰🥰",
         people: [
             {
                 name: "Julian",
@@ -66,13 +60,7 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "Untitled527_20240720003955.png",
-        title: "Cool guy",
-        people: [
-            {
-                name: "Julian",
-                url: "https://juliandoes.art",
-            },
-        ],
+        title: "",
         aspectRatio: {
             x: 2,
             y: 4,
@@ -81,24 +69,18 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "bafkreifyegaaaipxjwm5nqxkr4unwruheuijbmwohyrkva5pem4zpdoaay.jpg",
-        title: "Cool guy",
+        title: "She likes her new shark sweater",
         people: [
             {
-                name: "Julian",
-                url: "https://juliandoes.art",
+                name: "Kipper",
+                url: "https://www.instagram.com/bluerhapsodyy",
             },
         ],
         lazy: true,
     },
     {
         imgUrl: "Untitled570_Restored_20241101220703.png",
-        title: "Cool guy",
-        people: [
-            {
-                name: "Julian",
-                url: "https://juliandoes.art",
-            },
-        ],
+        title: "",
         aspectRatio: {
             x: 4,
             y: 4,
@@ -107,11 +89,11 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "Untitled608_20250130013231.png",
-        title: "Cool guy",
+        title: "The 'fit",
         people: [
             {
-                name: "Julian",
-                url: "https://juliandoes.art",
+                name: "Capri",
+                url: "https://bsky.app/profile/nilllzz.dev",
             },
         ],
         aspectRatio: {
@@ -122,13 +104,7 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "example_7.png",
-        title: "Cool guy",
-        people: [
-            {
-                name: "Julian",
-                url: "https://juliandoes.art",
-            },
-        ],
+        title: "Barraskewda",
         aspectRatio: {
             x: 2,
             y: 4,
@@ -137,24 +113,18 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "bafkreiapdb3wx2qx7j2mjjkrikvs22zpuj3mwyvx3mekvsaiyhfnlqpxh4.jpg",
-        title: "Cool guy",
+        title: "fan art of Moss :3 mossy dude fr",
         people: [
             {
-                name: "Julian",
-                url: "https://juliandoes.art",
+                name: "Moss",
+                url: "https://bsky.app/profile/mossisdead.bsky.social",
             },
         ],
         lazy: true,
     },
     {
         imgUrl: "Untitled634_20250220153628.png",
-        title: "Cool guy",
-        people: [
-            {
-                name: "Julian",
-                url: "https://juliandoes.art",
-            },
-        ],
+        title: "Will Ref Sheet",
         aspectRatio: {
             x: 3,
             y: 2,
@@ -163,11 +133,11 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "Untitled506_20240515230841.jpg",
-        title: "Cool guy",
+        title: "She's ANGY",
         people: [
             {
-                name: "Julian",
-                url: "https://juliandoes.art",
+                name: "Kipper",
+                url: "https://www.instagram.com/bluerhapsodyy",
             },
         ],
         aspectRatio: {
@@ -178,13 +148,7 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "renderedFull2.jpg",
-        title: "Cool guy",
-        people: [
-            {
-                name: "Julian",
-                url: "https://juliandoes.art",
-            },
-        ],
+        title: "Butterfly 🤗",
         aspectRatio: {
             x: 2,
             y: 4,
@@ -193,8 +157,16 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "Untitled567_20241017232630.png",
-        title: "Cool guy",
+        title: "The Squad",
         people: [
+            {
+                name: "nilllzz",
+                url: "https://bsky.app/profile/nilllzz.dev",
+            },
+            {
+                name: "Kipper",
+                url: "https://www.instagram.com/bluerhapsodyy",
+            },
             {
                 name: "Julian",
                 url: "https://juliandoes.art",
@@ -204,22 +176,16 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "bafkreifhuhhb3bpvswrpwvj42dl6pf4rx4lvigoolotwqhk7pxnnq3t6sq.jpg",
-        title: "Cool guy",
-        people: [
-            {
-                name: "Julian",
-                url: "https://juliandoes.art",
-            },
-        ],
+        title: "Male Kip ♂️",
         lazy: true,
     },
     {
         imgUrl: "example_3.png",
-        title: "Cool guy",
+        title: "She's just chillin'",
         people: [
             {
-                name: "Julian",
-                url: "https://juliandoes.art",
+                name: "Kipper",
+                url: "https://www.instagram.com/bluerhapsodyy",
             },
         ],
         aspectRatio: {
@@ -230,11 +196,11 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "caprieye.png",
-        title: "Cool guy",
+        title: "Capri Eye Closeup",
         people: [
             {
-                name: "Julian",
-                url: "https://juliandoes.art",
+                name: "Capri",
+                url: "https://bsky.app/profile/nilllzz.dev",
             },
         ],
         aspectRatio: {
@@ -244,77 +210,6 @@ const indexGalleryImages = [
         lazy: true,
     },
 ];
-
-// {
-//     imgUrl: "bafkreifyegaaaipxjwm5nqxkr4unwruheuijbmwohyrkva5pem4zpdoaay.jpg",
-//     title: "She likes her new shark sweater",
-//     lazy: false,
-// },
-// {
-//     imgUrl: "bafkreihgrhwjc7doem4w7beocbwhdqdjlinwuvcr2bhrgf7exioulu5v4i.jpg",
-//     title: "Drew my friend JulianDough in a fit i saw on Pinterest 🥰🥰",
-//     people: [
-//         {
-//             name: "Julian",
-//             url: "https://juliandoes.art",
-//         },
-//     ],
-//     lazy: false,
-// },
-// {
-//     imgUrl: "bafkreifwrabag55fbqarsybpkhsdvcifly6fbwdvq5kbe2f4evuadyyoaq.jpg",
-//     title: "YCH on a hill at dusk",
-//     aspectRatio: {
-//         x: 4,
-//         y: 2,
-//     },
-//     lazy: false,
-// },
-// {
-//     imgUrl: "bafkreiapdb3wx2qx7j2mjjkrikvs22zpuj3mwyvx3mekvsaiyhfnlqpxh4.jpg",
-//     title: "fan art of Moss :3 mossy dude fr",
-//     people: [
-//         {
-//             name: "Moss",
-//             url: "https://bsky.app/profile/mossisdead.bsky.social",
-//         },
-//     ],
-//     lazy: true,
-// },
-// {
-//     imgUrl: "bafkreihtdpeeqj7fq5se7nswr2wsrevvlc34iznqtamjisbk6i2re6ao4i.jpg",
-//     title: "A caniform drawing reference I made",
-//     lazy: true,
-// },
-// {
-//     imgUrl: "Untitled634_20250220153628.png",
-//     title: "Will ref sheet",
-//     aspectRatio: {
-//         x: 4,
-//         y: 4,
-//     },
-//     lazy: true,
-// },
-// {
-//     imgUrl: "Untitled209_20210812015109.png",
-//     title: "Lilith",
-//     lazy: true,
-// },
-// {
-//     imgUrl: "caprieye.png",
-//     title: "Capri Eye",
-//     people: [
-//         {
-//             name: "nilllzz",
-//             url: "https://bsky.app/profile/nilllzz.dev",
-//         },
-//     ],
-//     aspectRatio: {
-//         x: 4,
-//         y: 2,
-//     },
-//     lazy: true,
-// },
 
 /**
  * @type {GalleryImage[]}
