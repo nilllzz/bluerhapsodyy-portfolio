@@ -482,7 +482,7 @@ function onClickCommissionSlate(slateEl) {
             const exampleImageAEl = exampleImageEl.querySelector("a");
             exampleImageAEl.style.backgroundImage = `url(img/commissions/${example.imgUrl})`;
             exampleImageAEl.addEventListener("click", () => {
-                spawnGalleryDialog(`img/commissions/${example.imgUrl}`, "");
+                spawnGalleryDialog(`img/commissions/${example.imgUrl}`, example.title || "");
             });
 
             /** @type {HTMLDivElement} */
