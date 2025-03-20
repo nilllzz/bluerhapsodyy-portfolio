@@ -356,7 +356,13 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
             masonryParent.appendChild(masonryItem);
         }
 
-        imagesLoaded(masonryParent, function () {
+        imagesLoaded(masonryParent, async function () {
+            masonryParent.classList.remove("loading");
+            const loadingEl = document.getElementById("galleryMasonryLoading");
+            if (loadingEl) {
+                loadingEl.remove();
+            }
+
             new Masonry(masonryParent, {
                 itemSelector: ".masonryItem",
                 columnWidth: ".masonrySizer",
