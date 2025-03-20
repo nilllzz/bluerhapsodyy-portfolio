@@ -480,10 +480,11 @@ function onClickCommissionSlate(slateEl) {
             // Set image src and href.
             /** @type {HTMLAnchorElement} */
             const exampleImageAEl = exampleImageEl.querySelector("a");
-            exampleImageAEl.href = `img/commissions/${example.imgUrl}`;
             exampleImageAEl.style.backgroundImage = `url(img/commissions/${example.imgUrl})`;
+            exampleImageAEl.addEventListener("click", () => {
+                spawnGalleryDialog(`img/commissions/${example.imgUrl}`, "");
+            });
 
-            // Set
             /** @type {HTMLDivElement} */
             const exampleImageTitleEl = exampleImageEl.querySelector('[data-id="title"]');
             if (example.title) {

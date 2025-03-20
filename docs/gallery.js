@@ -282,6 +282,34 @@ const nsfwGalleryImages = [
     },
 ];
 
+function spawnGalleryDialog(imgUrl, title) {
+    const dialogEl = document.createElement("dialog");
+    dialogEl.classList.add("galleryDialog");
+
+    const imgEl = document.createElement("img");
+    imgEl.src = imgUrl;
+    dialogEl.appendChild(imgEl);
+
+    if (title && title.length > 0) {
+        const titleEl = document.createElement("div");
+        titleEl.innerText = title;
+        dialogEl.appendChild(titleEl);
+    }
+
+    const closeEl = document.createElement("button");
+    const closeIconEl = document.createElement("i");
+    closeIconEl.classList.add("bi", "bi-x");
+    closeEl.appendChild(closeIconEl);
+    closeEl.addEventListener("click", () => {
+        dialogEl.close();
+        dialogEl.remove();
+    });
+    dialogEl.appendChild(closeEl);
+
+    document.body.appendChild(dialogEl);
+    dialogEl.showModal();
+}
+
 /**
  * @param {GalleryImage[]} galleryImages
  * @param {boolean} lazy
@@ -297,7 +325,9 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         /** @type {HTMLAnchorElement} */
         const imageEl = clone.querySelector(".galleryImage");
         imageEl.style.backgroundImage = `url(${pathPrefix}img/gallery/${galleryImage.imgUrl})`;
-        imageEl.href = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
+        imageEl.addEventListener("click", () =>
+            spawnGalleryDialog(`img/gallery/${galleryImage.imgUrl}`, galleryImage.title)
+        );
 
         if (lazy) {
             imageEl.style.animationName = "gallery-lazy-load-in";
@@ -347,7 +377,9 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         for (const galleryImage of galleryImages) {
             const masonryItem = document.createElement("a");
             masonryItem.classList.add("masonryItem");
-            masonryItem.href = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
+            masonryItem.addEventListener("click", () =>
+                spawnGalleryDialog(`img/gallery/${galleryImage.imgUrl}`, galleryImage.title)
+            );
             masonryItem.target = "_blank";
             /** @type {HTMLImageElement} */
             const masonryImg = document.createElement("img");

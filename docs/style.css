@@ -386,11 +386,6 @@ nav > ul > li.active:hover > a {
     -webkit-text-stroke: 1px var(--color-kip-dark1);
 }
 
-.commissionDetailsDialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(10px);
-}
-
 .commissionDetailsDialog {
     background-color: var(--color-kip-dark1);
     border-radius: 12px;
@@ -535,6 +530,7 @@ nav > ul > li.active:hover > a {
     background-size: cover;
     background-position: center;
     z-index: 1;
+    cursor: pointer;
 
     transition: transform 1.25s cubic-bezier(0.075, 0.82, 0.165, 1);
 

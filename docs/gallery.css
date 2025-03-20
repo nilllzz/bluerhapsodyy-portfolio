@@ -64,6 +64,7 @@
     background-size: cover;
     background-position: center;
     display: block;
+    cursor: pointer;
 
     transition: transform 1.25s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -150,6 +151,7 @@
 .masonryItem img {
     display: block;
     max-width: 100%;
+    cursor: pointer;
 }
 
 @media (max-width: 1200px) {
@@ -180,5 +182,91 @@
     }
     100% {
         opacity: 1;
+    }
+}
+
+.galleryDialog {
+    background: none;
+    border: none;
+}
+
+.galleryDialog > img {
+    display: block;
+    max-width: calc(100vw - 96px);
+    max-height: calc(100vh - 96px);
+    border-radius: 16px;
+}
+
+.galleryDialog > div {
+    position: absolute;
+    bottom: 48px;
+    width: min(60vw, 500px);
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 24px;
+    filter: drop-shadow(0 0 6px black);
+    text-align: center;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.galleryDialog > button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    width: 45px;
+    height: 45px;
+    padding: 8px;
+
+    border: none;
+    border-radius: 50%;
+
+    color: var(--color-kip-white);
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    filter: drop-shadow(0 0 6px black);
+
+    cursor: pointer;
+
+    transition: background-color 0.1s ease, color 0.1s ease, filter 0.1s ease;
+}
+
+.galleryDialog > button:hover {
+    background-color: var(--color-kip-white);
+    color: var(--color-kip-dark1);
+    filter: drop-shadow(0 0 10px var(--color-kip-purple));
+}
+
+@media (max-width: 800px) {
+    .galleryDialog {
+        padding: 0;
+        overflow: visible;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .galleryDialog > img {
+        max-width: calc(100vw - 16px);
+        max-height: calc(100vh - 4px);
+    }
+
+    .galleryDialog > div {
+        bottom: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .galleryDialog > button {
+        top: 8px;
+        right: 8px;
     }
 }

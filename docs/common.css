@@ -362,6 +362,11 @@ dialog {
     animation-timing-function: ease-out;
 }
 
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+}
+
 @keyframes dialog-anim-in {
     0% {
         transform: scale(0.95);

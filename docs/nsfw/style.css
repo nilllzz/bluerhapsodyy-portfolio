@@ -75,10 +75,6 @@ h1 > * {
     filter: blur(25px);
 }
 
-dialog::backdrop {
-    backdrop-filter: blur(25px);
-}
-
 dialog {
     background-image: url("../img/bg.png");
     color: var(--color-kip-white);
