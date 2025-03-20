@@ -394,13 +394,20 @@ const nsfwGalleryImages = [
 function loadGallery(galleryImages, lazy, pathPrefix = "") {
     const galleryTemplateEl = document.getElementById("galleryImageTemplate");
 
+    let i = 0;
     for (const galleryImage of galleryImages.filter((x) => x.lazy == lazy)) {
+        /** @type {HTMLDivElement} */
         const clone = galleryTemplateEl.content.cloneNode(true);
 
         /** @type {HTMLAnchorElement} */
         const imageEl = clone.querySelector(".galleryImage");
         imageEl.style.backgroundImage = `url(${pathPrefix}img/gallery/${galleryImage.imgUrl})`;
         imageEl.href = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
+
+        if (lazy) {
+            imageEl.style.animationName = "gallery-lazy-load-in";
+            imageEl.style.animationDelay = `${i * 0.05}s`;
+        }
 
         if (galleryImage.aspectRatio) {
             const container = clone.querySelector(".galleryImageContainer");
@@ -432,5 +439,37 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         }
 
         document.getElementById("galleryContainer").appendChild(clone);
+
+        i++;
+    }
+
+    const masonryParent = document.getElementById("galleryMasonry");
+    if (masonryParent && !masonryParent.hasChildNodes()) {
+        const sizer = document.createElement("div");
+        sizer.classList.add("masonrySizer");
+        masonryParent.appendChild(sizer);
+
+        for (const galleryImage of galleryImages) {
+            const masonryItem = document.createElement("a");
+            masonryItem.classList.add("masonryItem");
+            masonryItem.href = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
+            masonryItem.target = "_blank";
+            /** @type {HTMLImageElement} */
+            const masonryImg = document.createElement("img");
+            masonryImg.src = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
+            masonryImg.loading = "lazy";
+            masonryItem.appendChild(masonryImg);
+            masonryParent.appendChild(masonryItem);
+        }
+
+        imagesLoaded(masonryParent, function () {
+            new Masonry(masonryParent, {
+                itemSelector: ".masonryItem",
+                columnWidth: ".masonrySizer",
+                percentPosition: true,
+                gutter: 2,
+                horizontalOrder: true,
+            });
+        });
     }
 }
