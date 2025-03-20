@@ -28,13 +28,8 @@ const indexGalleryImages = [
         lazy: false,
     },
     {
-        imgUrl: "bafkreifyegaaaipxjwm5nqxkr4unwruheuijbmwohyrkva5pem4zpdoaay.jpg",
-        title: "She likes her new shark sweater",
-        lazy: false,
-    },
-    {
-        imgUrl: "bafkreihgrhwjc7doem4w7beocbwhdqdjlinwuvcr2bhrgf7exioulu5v4i.jpg",
-        title: "Drew my friend JulianDough in a fit i saw on Pinterest 🥰🥰",
+        imgUrl: "example_72.png",
+        title: "Cool guy",
         people: [
             {
                 name: "Julian",
@@ -44,8 +39,25 @@ const indexGalleryImages = [
         lazy: false,
     },
     {
-        imgUrl: "bafkreifwrabag55fbqarsybpkhsdvcifly6fbwdvq5kbe2f4evuadyyoaq.jpg",
-        title: "YCH on a hill at dusk",
+        imgUrl: "Untitled209_20210812015109.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        lazy: false,
+    },
+    {
+        imgUrl: "Untitled516_20240616200137.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
         aspectRatio: {
             x: 4,
             y: 2,
@@ -53,24 +65,40 @@ const indexGalleryImages = [
         lazy: false,
     },
     {
-        imgUrl: "bafkreiapdb3wx2qx7j2mjjkrikvs22zpuj3mwyvx3mekvsaiyhfnlqpxh4.jpg",
-        title: "fan art of Moss :3 mossy dude fr",
+        imgUrl: "Untitled527_20240720003955.png",
+        title: "Cool guy",
         people: [
             {
-                name: "Moss",
-                url: "https://bsky.app/profile/mossisdead.bsky.social",
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        aspectRatio: {
+            x: 2,
+            y: 4,
+        },
+        lazy: true,
+    },
+    {
+        imgUrl: "bafkreifyegaaaipxjwm5nqxkr4unwruheuijbmwohyrkva5pem4zpdoaay.jpg",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
             },
         ],
         lazy: true,
     },
     {
-        imgUrl: "bafkreihtdpeeqj7fq5se7nswr2wsrevvlc34iznqtamjisbk6i2re6ao4i.jpg",
-        title: "A caniform drawing reference I made",
-        lazy: true,
-    },
-    {
-        imgUrl: "Untitled634_20250220153628.png",
-        title: "Will ref sheet",
+        imgUrl: "Untitled570_Restored_20241101220703.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
         aspectRatio: {
             x: 4,
             y: 4,
@@ -78,17 +106,135 @@ const indexGalleryImages = [
         lazy: true,
     },
     {
-        imgUrl: "Untitled209_20210812015109.png",
-        title: "Lilith",
+        imgUrl: "Untitled608_20250130013231.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        aspectRatio: {
+            x: 2,
+            y: 4,
+        },
+        lazy: true,
+    },
+    {
+        imgUrl: "example_7.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        aspectRatio: {
+            x: 2,
+            y: 4,
+        },
+        lazy: true,
+    },
+    {
+        imgUrl: "bafkreiapdb3wx2qx7j2mjjkrikvs22zpuj3mwyvx3mekvsaiyhfnlqpxh4.jpg",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        lazy: true,
+    },
+    {
+        imgUrl: "Untitled634_20250220153628.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        aspectRatio: {
+            x: 3,
+            y: 2,
+        },
+        lazy: true,
+    },
+    {
+        imgUrl: "Untitled506_20240515230841.jpg",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        aspectRatio: {
+            x: 3,
+            y: 2,
+        },
+        lazy: true,
+    },
+    {
+        imgUrl: "renderedFull2.jpg",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        aspectRatio: {
+            x: 2,
+            y: 4,
+        },
+        lazy: true,
+    },
+    {
+        imgUrl: "Untitled567_20241017232630.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        lazy: true,
+    },
+    {
+        imgUrl: "bafkreifhuhhb3bpvswrpwvj42dl6pf4rx4lvigoolotwqhk7pxnnq3t6sq.jpg",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        lazy: true,
+    },
+    {
+        imgUrl: "example_3.png",
+        title: "Cool guy",
+        people: [
+            {
+                name: "Julian",
+                url: "https://juliandoes.art",
+            },
+        ],
+        aspectRatio: {
+            x: 4,
+            y: 4,
+        },
         lazy: true,
     },
     {
         imgUrl: "caprieye.png",
-        title: "Capri Eye",
+        title: "Cool guy",
         people: [
             {
-                name: "nilllzz",
-                url: "https://bsky.app/profile/nilllzz.dev",
+                name: "Julian",
+                url: "https://juliandoes.art",
             },
         ],
         aspectRatio: {
@@ -98,6 +244,77 @@ const indexGalleryImages = [
         lazy: true,
     },
 ];
+
+// {
+//     imgUrl: "bafkreifyegaaaipxjwm5nqxkr4unwruheuijbmwohyrkva5pem4zpdoaay.jpg",
+//     title: "She likes her new shark sweater",
+//     lazy: false,
+// },
+// {
+//     imgUrl: "bafkreihgrhwjc7doem4w7beocbwhdqdjlinwuvcr2bhrgf7exioulu5v4i.jpg",
+//     title: "Drew my friend JulianDough in a fit i saw on Pinterest 🥰🥰",
+//     people: [
+//         {
+//             name: "Julian",
+//             url: "https://juliandoes.art",
+//         },
+//     ],
+//     lazy: false,
+// },
+// {
+//     imgUrl: "bafkreifwrabag55fbqarsybpkhsdvcifly6fbwdvq5kbe2f4evuadyyoaq.jpg",
+//     title: "YCH on a hill at dusk",
+//     aspectRatio: {
+//         x: 4,
+//         y: 2,
+//     },
+//     lazy: false,
+// },
+// {
+//     imgUrl: "bafkreiapdb3wx2qx7j2mjjkrikvs22zpuj3mwyvx3mekvsaiyhfnlqpxh4.jpg",
+//     title: "fan art of Moss :3 mossy dude fr",
+//     people: [
+//         {
+//             name: "Moss",
+//             url: "https://bsky.app/profile/mossisdead.bsky.social",
+//         },
+//     ],
+//     lazy: true,
+// },
+// {
+//     imgUrl: "bafkreihtdpeeqj7fq5se7nswr2wsrevvlc34iznqtamjisbk6i2re6ao4i.jpg",
+//     title: "A caniform drawing reference I made",
+//     lazy: true,
+// },
+// {
+//     imgUrl: "Untitled634_20250220153628.png",
+//     title: "Will ref sheet",
+//     aspectRatio: {
+//         x: 4,
+//         y: 4,
+//     },
+//     lazy: true,
+// },
+// {
+//     imgUrl: "Untitled209_20210812015109.png",
+//     title: "Lilith",
+//     lazy: true,
+// },
+// {
+//     imgUrl: "caprieye.png",
+//     title: "Capri Eye",
+//     people: [
+//         {
+//             name: "nilllzz",
+//             url: "https://bsky.app/profile/nilllzz.dev",
+//         },
+//     ],
+//     aspectRatio: {
+//         x: 4,
+//         y: 2,
+//     },
+//     lazy: true,
+// },
 
 /**
  * @type {GalleryImage[]}

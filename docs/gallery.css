@@ -51,6 +51,7 @@
     border-color: var(--color-kip-dark4);
     border-style: solid;
     border-radius: 8px;
+    background-color: var(--color-kip-dark2);
 
     position: relative;
 }

@@ -120,6 +120,14 @@ const commissionTypes = [
                 imgUrl: "stickers/example_5.png",
                 title: "Kipper Hug",
             },
+            {
+                imgUrl: "stickers/example_6.png",
+                title: "Gotten",
+            },
+            {
+                imgUrl: "stickers/example_7.png",
+                title: "Acquired",
+            },
         ],
         pricing: [
             {
@@ -176,9 +184,59 @@ const commissionTypes = [
         ],
     },
     {
-        id: "simple-color",
-        title: "Simple Color",
+        id: "base-color",
+        title: "Base Color",
         imgUrl: "color/index.png",
+        examples: [
+            {
+                imgUrl: "color/example_9.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_0.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_7.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_1.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_2.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_3.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_4.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_5.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_6.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_8.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_10.png",
+                title: "",
+            },
+            {
+                imgUrl: "color/example_11.png",
+                title: "",
+            },
+        ],
         pricing: [
             {
                 name: "Headshot",
@@ -206,6 +264,44 @@ const commissionTypes = [
         id: "render",
         title: "Rendered",
         imgUrl: "rendered/index.png",
+        examples: [
+            {
+                imgUrl: "rendered/example_0.png",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_3.png",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_4.jpg",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_1.png",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_2.png",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_5.png",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_6.png",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_7.png",
+                title: "",
+            },
+            {
+                imgUrl: "rendered/example_8.png",
+                title: "",
+            },
+        ],
         pricing: [
             {
                 name: "Headshot",
@@ -236,6 +332,18 @@ const commissionTypes = [
         examples: [
             {
                 imgUrl: "meme/example_0.jpg",
+                title: "",
+            },
+            {
+                imgUrl: "meme/example_1.png",
+                title: "",
+            },
+            {
+                imgUrl: "meme/example_2.png",
+                title: "",
+            },
+            {
+                imgUrl: "meme/example_3.png",
                 title: "",
             },
         ],
