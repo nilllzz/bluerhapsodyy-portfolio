@@ -352,7 +352,6 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
             /** @type {HTMLImageElement} */
             const masonryImg = document.createElement("img");
             masonryImg.src = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
-            masonryImg.loading = "lazy";
             masonryItem.appendChild(masonryImg);
             masonryParent.appendChild(masonryItem);
         }
