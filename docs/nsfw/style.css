@@ -75,7 +75,7 @@ h1 > * {
     filter: blur(25px);
 }
 
-dialog {
+#ageGateDialog {
     background-image: url("../img/bg.png");
     color: var(--color-kip-white);
 
@@ -91,12 +91,12 @@ dialog {
     padding: 32px;
 }
 
-dialog > h2 {
+#ageGateDialog > h2 {
     margin-top: 0;
     padding-top: 0;
 }
 
-dialog .button {
+#ageGateDialog .button {
     backdrop-filter: none;
 }
 

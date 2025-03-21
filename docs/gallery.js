@@ -282,7 +282,7 @@ const nsfwGalleryImages = [
     },
 ];
 
-function spawnGalleryDialog(imgUrl, title) {
+function spawnGalleryDialog(imgUrl, title, ref = false) {
     const dialogEl = document.createElement("dialog");
     dialogEl.classList.add("galleryDialog");
 
@@ -306,8 +306,34 @@ function spawnGalleryDialog(imgUrl, title) {
     });
     dialogEl.appendChild(closeEl);
 
+    if (ref) {
+        // Set query to image url.
+        const url = new URL(window.location.href);
+        url.searchParams.set("img", imgUrl);
+        window.history.replaceState({}, "", url);
+
+        dialogEl.addEventListener("close", () => {
+            // Remove query from url.
+            url.searchParams.delete("img");
+            window.history.replaceState({}, "", url);
+        });
+    }
+
     document.body.appendChild(dialogEl);
     dialogEl.showModal();
+}
+
+// On startup, check if there is a query for an image and spawn the dialog.
+const url = new URL(window.location.href);
+const imgParam = url.searchParams.get("img");
+if (imgParam) {
+    const img = imgParam;
+    // Try and find the image by path from the gallery items.
+    const galleryImages = indexGalleryImages.concat(nsfwGalleryImages);
+    const galleryImage = galleryImages.find((x) => `img/gallery/${x.imgUrl}` === img);
+    const title = galleryImage ? galleryImage.title : "";
+
+    spawnGalleryDialog(img, title, true);
 }
 
 /**
@@ -326,7 +352,11 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         const imageEl = clone.querySelector(".galleryImage");
         imageEl.style.backgroundImage = `url(${pathPrefix}img/gallery/${galleryImage.imgUrl})`;
         imageEl.addEventListener("click", () =>
-            spawnGalleryDialog(`img/gallery/${galleryImage.imgUrl}`, galleryImage.title)
+            spawnGalleryDialog(
+                `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
+                galleryImage.title,
+                true
+            )
         );
 
         if (lazy) {
@@ -378,7 +408,11 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
             const masonryItem = document.createElement("a");
             masonryItem.classList.add("masonryItem");
             masonryItem.addEventListener("click", () =>
-                spawnGalleryDialog(`img/gallery/${galleryImage.imgUrl}`, galleryImage.title)
+                spawnGalleryDialog(
+                    `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
+                    galleryImage.title,
+                    true
+                )
             );
             masonryItem.target = "_blank";
             /** @type {HTMLImageElement} */

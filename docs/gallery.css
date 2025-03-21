@@ -237,7 +237,8 @@
 
     cursor: pointer;
 
-    transition: background-color 0.1s ease, color 0.1s ease, filter 0.1s ease, border 0.1s ease;
+    transition: background-color 0.1s ease, color 0.1s ease, filter 0.1s ease, border 0.1s ease,
+        transform 0.1s ease;
 }
 
 .galleryDialog > button:hover {
@@ -245,6 +246,10 @@
     color: var(--color-kip-dark1);
     filter: drop-shadow(0 0 10px var(--color-kip-purple));
     border-color: var(--color-kip-white);
+}
+
+.galleryDialog > button:active {
+    transform: scale(0.9);
 }
 
 @media (max-width: 800px) {
