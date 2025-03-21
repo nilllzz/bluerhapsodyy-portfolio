@@ -60,7 +60,7 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "Untitled527_20240720003955.png",
-        title: "",
+        title: "Fan art",
         aspectRatio: {
             x: 2,
             y: 4,
@@ -80,7 +80,7 @@ const indexGalleryImages = [
     },
     {
         imgUrl: "Untitled570_Restored_20241101220703.png",
-        title: "",
+        title: "Commission",
         aspectRatio: {
             x: 4,
             y: 4,
