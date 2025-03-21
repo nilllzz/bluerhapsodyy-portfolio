@@ -200,7 +200,7 @@
 .galleryDialog > div {
     position: absolute;
     bottom: 48px;
-    width: min(60vw, 500px);
+    width: min(60vw, 500px, 90%);
     background-color: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(10px);
     padding-left: 24px;
@@ -220,11 +220,13 @@
     top: 24px;
     right: 24px;
 
-    width: 45px;
-    height: 45px;
+    width: 47px;
+    height: 47px;
     padding: 8px;
 
-    border: none;
+    border-style: solid;
+    border-color: var(--color-kip-dark3);
+    border-width: 1px;
     border-radius: 50%;
 
     color: var(--color-kip-white);
@@ -235,13 +237,14 @@
 
     cursor: pointer;
 
-    transition: background-color 0.1s ease, color 0.1s ease, filter 0.1s ease;
+    transition: background-color 0.1s ease, color 0.1s ease, filter 0.1s ease, border 0.1s ease;
 }
 
 .galleryDialog > button:hover {
     background-color: var(--color-kip-white);
     color: var(--color-kip-dark1);
     filter: drop-shadow(0 0 10px var(--color-kip-purple));
+    border-color: var(--color-kip-white);
 }
 
 @media (max-width: 800px) {
