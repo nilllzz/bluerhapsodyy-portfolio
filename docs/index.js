@@ -543,3 +543,7 @@ function openCommissionDetailsDialogFromQuery() {
     onClickCommissionSlate(slateEl);
 }
 openCommissionDetailsDialogFromQuery();
+
+function onClickAboutSheet() {
+    spawnGalleryDialog(`img/sheet.png`, "", true);
+}
