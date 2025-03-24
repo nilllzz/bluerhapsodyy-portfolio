@@ -215,10 +215,8 @@
     transform: translateX(-50%);
 }
 
-.galleryDialog > button {
+.galleryDialog > .dialogButton {
     position: absolute;
-    top: 24px;
-    right: 24px;
 
     width: 47px;
     height: 47px;
@@ -241,15 +239,30 @@
         transform 0.1s ease;
 }
 
-.galleryDialog > button:hover {
+.galleryDialog > .dialogButton:hover {
     background-color: var(--color-kip-white);
     color: var(--color-kip-dark1);
     filter: drop-shadow(0 0 10px var(--color-kip-purple));
     border-color: var(--color-kip-white);
 }
 
-.galleryDialog > button:active {
+.galleryDialog > .dialogButton:active {
     transform: scale(0.9);
+}
+
+.galleryDialog > .closeButton {
+    top: 24px;
+    right: 24px;
+}
+
+.galleryDialog > .nextButton {
+    right: 24px;
+    top: calc(50% - 23px);
+}
+
+.galleryDialog > .prevButton {
+    left: 24px;
+    top: calc(50% - 23px);
 }
 
 @media (max-width: 800px) {
@@ -273,7 +286,7 @@
         padding-bottom: 8px;
     }
 
-    .galleryDialog > button {
+    .galleryDialog > .closeButton {
         top: 8px;
         right: 8px;
     }

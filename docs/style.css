@@ -730,3 +730,67 @@ nav > ul > li.active:hover > a {
 }
 
 /* #endregion Commissions */
+
+/* #region About */
+
+.aboutContainer {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.aboutContainer > div {
+    flex: 1 1 0px;
+}
+
+.aboutKipperContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.aboutKipper {
+    transform: rotateY(180deg);
+    display: block;
+    height: 66vh;
+}
+
+.aboutSocials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.aboutContainer h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-top: 4px;
+}
+
+.buttonSquare {
+    width: 180px;
+    height: 180px;
+    font-size: 16px;
+    padding: 16px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.buttonSquare i {
+    font-size: 48px;
+    filter: drop-shadow(0 0 8px black);
+    transition: transform 0.1s ease;
+}
+
+.buttonSquare:hover i {
+    transform: scale(1.25);
+}
+
+/* #endregion About */

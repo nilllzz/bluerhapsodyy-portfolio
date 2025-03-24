@@ -297,6 +297,7 @@ function spawnGalleryDialog(imgUrl, title, ref = false) {
     }
 
     const closeEl = document.createElement("button");
+    closeEl.classList.add("dialogButton", "closeButton");
     const closeIconEl = document.createElement("i");
     closeIconEl.classList.add("bi", "bi-x");
     closeEl.appendChild(closeIconEl);
