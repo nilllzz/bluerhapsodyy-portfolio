@@ -482,7 +482,18 @@ function onClickCommissionSlate(slateEl) {
             const exampleImageAEl = exampleImageEl.querySelector("a");
             exampleImageAEl.style.backgroundImage = `url(img/commissions/${example.imgUrl})`;
             exampleImageAEl.addEventListener("click", () => {
-                spawnGalleryDialog(`img/commissions/${example.imgUrl}`, example.title || "");
+                spawnGalleryDialog(
+                    `img/commissions/${example.imgUrl}`,
+                    example.title || "",
+                    false,
+                    {
+                        index: commissionType.examples.indexOf(example),
+                        images: commissionType.examples.map((x) => ({
+                            imgUrl: `img/commissions/${x.imgUrl}`,
+                            title: x.title || "",
+                        })),
+                    }
+                );
             });
 
             /** @type {HTMLDivElement} */

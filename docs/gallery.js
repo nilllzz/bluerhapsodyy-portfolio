@@ -282,7 +282,13 @@ const nsfwGalleryImages = [
     },
 ];
 
-function spawnGalleryDialog(imgUrl, title, ref = false) {
+/**
+ * @param {string} imgUrl
+ * @param {string} title
+ * @param {boolean} ref
+ * @param {{index:number;images:{imgUrl:string,title?:string}[]}|null} nav
+ */
+function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
     const dialogEl = document.createElement("dialog");
     dialogEl.classList.add("galleryDialog");
 
@@ -290,11 +296,14 @@ function spawnGalleryDialog(imgUrl, title, ref = false) {
     imgEl.src = imgUrl;
     dialogEl.appendChild(imgEl);
 
+    const titleEl = document.createElement("div");
     if (title && title.length > 0) {
-        const titleEl = document.createElement("div");
+        titleEl.style.display = "block";
         titleEl.innerText = title;
-        dialogEl.appendChild(titleEl);
+    } else {
+        titleEl.style.display = "none";
     }
+    dialogEl.appendChild(titleEl);
 
     const closeEl = document.createElement("button");
     closeEl.classList.add("dialogButton", "closeButton");
@@ -306,6 +315,52 @@ function spawnGalleryDialog(imgUrl, title, ref = false) {
         dialogEl.remove();
     });
     dialogEl.appendChild(closeEl);
+
+    function loadNewImage(newImgUrl, newTitle) {
+        if (newTitle) {
+            titleEl.style.display = "block";
+            titleEl.innerText = newTitle;
+        } else {
+            titleEl.innerText = "";
+            titleEl.style.display = "none";
+        }
+
+        imgEl.src = newImgUrl;
+    }
+
+    if (nav) {
+        let currentIndex = nav.index;
+
+        const nextEl = document.createElement("button");
+        nextEl.classList.add("dialogButton", "nextButton");
+        const nextIconEl = document.createElement("i");
+        nextIconEl.classList.add("bi", "bi-chevron-right");
+        nextEl.appendChild(nextIconEl);
+        nextEl.addEventListener("click", () => {
+            const newIndex = (currentIndex + 1) % nav.images.length;
+            const newImage = nav.images[newIndex];
+
+            loadNewImage(newImage.imgUrl, newImage.title);
+
+            currentIndex = newIndex;
+        });
+        dialogEl.appendChild(nextEl);
+
+        const prevEl = document.createElement("button");
+        prevEl.classList.add("dialogButton", "prevButton");
+        const prevIconEl = document.createElement("i");
+        prevIconEl.classList.add("bi", "bi-chevron-left");
+        prevEl.appendChild(prevIconEl);
+        prevEl.addEventListener("click", () => {
+            const newIndex = (currentIndex - 1 + nav.images.length) % nav.images.length;
+            const newImage = nav.images[newIndex];
+
+            loadNewImage(newImage.imgUrl, newImage.title);
+
+            currentIndex = newIndex;
+        });
+        dialogEl.appendChild(prevEl);
+    }
 
     if (ref) {
         // Set query to image url.
@@ -322,6 +377,20 @@ function spawnGalleryDialog(imgUrl, title, ref = false) {
 
     document.body.appendChild(dialogEl);
     dialogEl.showModal();
+
+    dialogEl.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") {
+            const nextEl = dialogEl.querySelector(".nextButton");
+            if (nextEl) {
+                nextEl.click();
+            }
+        } else if (e.key === "ArrowLeft") {
+            const prevEl = dialogEl.querySelector(".prevButton");
+            if (prevEl) {
+                prevEl.click();
+            }
+        }
+    });
 }
 
 // On startup, check if there is a query for an image and spawn the dialog.
@@ -344,6 +413,20 @@ if (imgParam) {
 function loadGallery(galleryImages, lazy, pathPrefix = "") {
     const galleryTemplateEl = document.getElementById("galleryImageTemplate");
 
+    function createDialogNav(ii) {
+        let index = ii;
+        if (lazy) {
+            index += galleryImages.filter((x) => !x.lazy).length;
+        }
+        return {
+            index,
+            images: galleryImages.map((x) => ({
+                title: x.title,
+                imgUrl: `${pathPrefix}img/gallery/${x.imgUrl}`,
+            })),
+        };
+    }
+
     let i = 0;
     for (const galleryImage of galleryImages.filter((x) => x.lazy == lazy)) {
         /** @type {HTMLDivElement} */
@@ -356,7 +439,8 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
             spawnGalleryDialog(
                 `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
                 galleryImage.title,
-                true
+                true,
+                createDialogNav(i)
             )
         );
 
@@ -405,6 +489,7 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         sizer.classList.add("masonrySizer");
         masonryParent.appendChild(sizer);
 
+        i = 0;
         for (const galleryImage of galleryImages) {
             const masonryItem = document.createElement("a");
             masonryItem.classList.add("masonryItem");
@@ -412,7 +497,8 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
                 spawnGalleryDialog(
                     `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
                     galleryImage.title,
-                    true
+                    true,
+                    createDialogNav(i)
                 )
             );
             masonryItem.target = "_blank";
@@ -421,6 +507,8 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
             masonryImg.src = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
             masonryItem.appendChild(masonryImg);
             masonryParent.appendChild(masonryItem);
+
+            i++;
         }
 
         imagesLoaded(masonryParent, async function () {

@@ -288,6 +288,23 @@
 
     .galleryDialog > .closeButton {
         top: 8px;
-        right: 8px;
+        right: -22px;
+    }
+
+    .galleryDialog > .dialogButton {
+        font-size: 12px;
+        padding: 6px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .galleryDialog > .nextButton {
+        right: -22px;
+        top: calc(50% - 23px);
+    }
+
+    .galleryDialog > .prevButton {
+        left: 0;
+        top: calc(50% - 23px);
     }
 }
