@@ -269,7 +269,7 @@
 
 .galleryDialog > button,
 .galleryDialog > div {
-    transition: opacity 0.1s ease;
+    transition: all 0.1s ease;
 }
 
 .galleryDialog.hideControls > button,
