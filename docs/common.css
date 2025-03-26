@@ -385,4 +385,36 @@ dialog::backdrop {
     }
 }
 
+.closeDialogButton {
+    border-color: var(--color-kip-white);
+    background-color: color-mix(in srgb, var(--color-kip-dark1) 75%, transparent 25%);
+    backdrop-filter: blur(4px);
+    color: var(--color-kip-white);
+    cursor: pointer;
+    font-family: "Title";
+
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    padding-top: 8px;
+    padding-right: 12px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+
+    transition: padding 0.1s ease, background-color 0.1s ease, color 0.1s ease;
+}
+
+.closeDialogButton:hover {
+    background-color: var(--color-kip-white);
+    color: var(--color-kip-dark1);
+}
+
+.closeDialogButton:active {
+    padding-top: 12px;
+}
+
 /* #endregion Dialog */

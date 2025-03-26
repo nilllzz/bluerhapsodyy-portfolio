@@ -294,7 +294,17 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
 
     const imgEl = document.createElement("img");
     imgEl.src = imgUrl;
+    imgEl.alt = title || "Gallery Image";
+    imgEl.addEventListener("click", () => {
+        dialogEl.classList.toggle("hideControls");
+    });
     dialogEl.appendChild(imgEl);
+
+    function unhideControls() {
+        if (dialogEl.classList.contains("hideControls")) {
+            dialogEl.classList.remove("hideControls");
+        }
+    }
 
     const titleEl = document.createElement("div");
     if (title && title.length > 0) {
@@ -303,17 +313,18 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
     } else {
         titleEl.style.display = "none";
     }
+    titleEl.addEventListener("mousedown", unhideControls);
     dialogEl.appendChild(titleEl);
 
     const closeEl = document.createElement("button");
-    closeEl.classList.add("dialogButton", "closeButton");
-    const closeIconEl = document.createElement("i");
-    closeIconEl.classList.add("bi", "bi-x");
-    closeEl.appendChild(closeIconEl);
+    closeEl.classList.add("closeDialogButton", "closeButton");
+    closeEl.title = "Close Dialog (ESC)";
+    closeEl.innerText = "Close";
     closeEl.addEventListener("click", () => {
         dialogEl.close();
         dialogEl.remove();
     });
+    closeEl.addEventListener("mousedown", unhideControls);
     dialogEl.appendChild(closeEl);
 
     function loadNewImage(newImgUrl, newTitle) {
@@ -344,6 +355,7 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
 
             currentIndex = newIndex;
         });
+        nextEl.addEventListener("mousedown", unhideControls);
         dialogEl.appendChild(nextEl);
 
         const prevEl = document.createElement("button");
@@ -359,6 +371,7 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
 
             currentIndex = newIndex;
         });
+        prevEl.addEventListener("mousedown", unhideControls);
         dialogEl.appendChild(prevEl);
     }
 
@@ -505,6 +518,7 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
             /** @type {HTMLImageElement} */
             const masonryImg = document.createElement("img");
             masonryImg.src = `${pathPrefix}img/gallery/${galleryImage.imgUrl}`;
+            masonryImg.alt = galleryImage.title || "Gallery Image";
             masonryItem.appendChild(masonryImg);
             masonryParent.appendChild(masonryItem);
 

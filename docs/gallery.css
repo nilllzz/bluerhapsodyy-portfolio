@@ -195,6 +195,7 @@
     max-width: calc(100vw - 96px);
     max-height: calc(100vh - 96px);
     border-radius: 16px;
+    background-color: color-mix(in srgb, var(--color-kip-dark2) 60%, transparent 20%);
 }
 
 .galleryDialog > div {
@@ -251,8 +252,9 @@
 }
 
 .galleryDialog > .closeButton {
-    top: 24px;
-    right: 24px;
+    position: absolute;
+    top: 16px;
+    right: 32px;
 }
 
 .galleryDialog > .nextButton {
@@ -263,6 +265,16 @@
 .galleryDialog > .prevButton {
     left: 24px;
     top: calc(50% - 23px);
+}
+
+.galleryDialog > button,
+.galleryDialog > div {
+    transition: opacity 0.1s ease;
+}
+
+.galleryDialog.hideControls > button,
+.galleryDialog.hideControls > div {
+    opacity: 0.25;
 }
 
 @media (max-width: 800px) {
@@ -287,8 +299,8 @@
     }
 
     .galleryDialog > .closeButton {
-        top: 8px;
-        right: -22px;
+        top: 0;
+        right: 0;
     }
 
     .galleryDialog > .dialogButton {
