@@ -719,9 +719,12 @@ nav > ul > li.active:hover > a {
 }
 
 .aboutKipper {
-    transform: rotateY(180deg);
     display: block;
-    height: 66vh;
+    height: 50vh;
+}
+
+.aboutKipperSm {
+    display: none;
 }
 
 .aboutSocials {
@@ -825,6 +828,16 @@ nav > ul > li.active:hover > a {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@media (max-width: 800px) {
+    .aboutKipper {
+        display: none;
+    }
+
+    .aboutKipperSm {
+        display: block;
     }
 }
 
