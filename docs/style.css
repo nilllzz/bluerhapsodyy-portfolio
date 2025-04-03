@@ -720,7 +720,8 @@ nav > ul > li.active:hover > a {
 
 .aboutKipper {
     display: block;
-    height: 50vh;
+    max-height: 50vh;
+    max-width: 90vw;
 }
 
 .aboutKipperSm {
