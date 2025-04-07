@@ -443,6 +443,12 @@ function onClickCommissionSlate(slateEl) {
         return;
     }
 
+    gtag("event", "commission_type_engage", {
+        event_category: "engagement",
+        event_label: commissionId,
+        value: 1,
+    });
+
     // Copy commission slate into the dialog.
     const slateTargetEl = document.getElementById("commissionDetailsDialogSlateTarget");
     slateTargetEl.innerHTML = "";
