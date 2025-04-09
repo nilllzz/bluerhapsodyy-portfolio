@@ -448,12 +448,13 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         /** @type {HTMLAnchorElement} */
         const imageEl = clone.querySelector(".galleryImage");
         imageEl.style.backgroundImage = `url(${pathPrefix}img/gallery/${galleryImage.imgUrl})`;
+        const nav = createDialogNav(i);
         imageEl.addEventListener("click", () =>
             spawnGalleryDialog(
                 `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
                 galleryImage.title,
                 true,
-                createDialogNav(i)
+                nav
             )
         );
 
@@ -506,12 +507,13 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         for (const galleryImage of galleryImages) {
             const masonryItem = document.createElement("a");
             masonryItem.classList.add("masonryItem");
+            const nav = createDialogNav(i);
             masonryItem.addEventListener("click", () =>
                 spawnGalleryDialog(
                     `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
                     galleryImage.title,
                     true,
-                    createDialogNav(i)
+                    nav
                 )
             );
             masonryItem.target = "_blank";
