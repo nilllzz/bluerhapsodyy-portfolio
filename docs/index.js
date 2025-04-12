@@ -74,12 +74,12 @@ document.addEventListener("scroll", (e) => {
 // #endregion
 // ------------------------------------------------------------------------------------------------
 
-loadGallery(indexGalleryImages, false);
+loadGallery(indexGalleryImages, false, "", { type: "gallery", value: "index" });
 
 function onClickExpandGallery() {
     const galleryParentEl = document.getElementById("galleryParent");
     galleryParentEl.classList.toggle("closed");
-    loadGallery(indexGalleryImages, true);
+    loadGallery(indexGalleryImages, true, { type: "gallery", value: "index" });
 }
 
 /**
@@ -443,11 +443,7 @@ function onClickCommissionSlate(slateEl) {
         return;
     }
 
-    gtag("event", "commission_type_engage", {
-        event_category: "engagement",
-        event_label: commissionId,
-        value: 1,
-    });
+    trackEventOpenCommissionType(commissionId);
 
     // Copy commission slate into the dialog.
     const slateTargetEl = document.getElementById("commissionDetailsDialogSlateTarget");
@@ -488,6 +484,11 @@ function onClickCommissionSlate(slateEl) {
             const exampleImageAEl = exampleImageEl.querySelector("a");
             exampleImageAEl.style.backgroundImage = `url(img/commissions/${example.imgUrl})`;
             exampleImageAEl.addEventListener("click", () => {
+                trackEventOpenGalleryImage(
+                    "commission_type",
+                    commissionId,
+                    `img/commissions/${example.imgUrl}`
+                );
                 spawnGalleryDialog(
                     `img/commissions/${example.imgUrl}`,
                     example.title || "",
@@ -562,5 +563,6 @@ function openCommissionDetailsDialogFromQuery() {
 openCommissionDetailsDialogFromQuery();
 
 function onClickAboutSheet() {
+    trackEventOpenGalleryImage("single", "single:commission_sheet", "img/sheet.png");
     spawnGalleryDialog(`img/sheet.png`, "", true);
 }

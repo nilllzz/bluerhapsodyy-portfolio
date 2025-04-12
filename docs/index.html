@@ -71,16 +71,24 @@
             <nav id="mainNav">
                 <ul id="navList">
                     <li class="active" data-ref="top">
-                        <a href="#top"><span>Home</span></a>
+                        <a href="#top" onclick="trackEventNavigate('nav', 'hero')">
+                            <span>Home</span>
+                        </a>
                     </li>
                     <li data-ref="commissions">
-                        <a href="#commissions"><span>Commissions</span></a>
+                        <a href="#commissions" onclick="trackEventNavigate('nav', 'commissions')">
+                            <span>Commissions</span>
+                        </a>
                     </li>
                     <li data-ref="gallery">
-                        <a href="#gallery"><span>Gallery</span></a>
+                        <a href="#gallery" onclick="trackEventNavigate('nav', 'gallery')">
+                            <span>Gallery</span>
+                        </a>
                     </li>
                     <li data-ref="about">
-                        <a href="#about"><span>About</span></a>
+                        <a href="#about" onclick="trackEventNavigate('nav', 'about')">
+                            <span>About</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -90,6 +98,7 @@
             <script src="./masonry.js"></script>
             <script src="./imagesloaded.js"></script>
 
+            <script src="./trackEvent.js"></script>
             <script src="./gallery.js"></script>
 
             <h1 id="top" style="margin: 0"></h1>
@@ -118,6 +127,7 @@
                                     rel="noopener noreferrer"
                                     class="iconButton"
                                     data-tooltip-text="Follow me on Bluesky"
+                                    onclick="trackEventClickSocialLink('hero', 'bluesky')"
                                 >
                                     <i class="fa fa-bluesky"></i>
                                 </a>
@@ -127,6 +137,7 @@
                                     rel="noopener noreferrer"
                                     class="iconButton"
                                     data-tooltip-text="My Discord Server"
+                                    onclick="trackEventClickSocialLink('hero', 'discord')"
                                 >
                                     <i class="fa fa-discord"></i>
                                 </a>
@@ -136,6 +147,7 @@
                                     rel="noopener noreferrer"
                                     class="iconButton"
                                     data-tooltip-text="Follow me on Instagram"
+                                    onclick="trackEventClickSocialLink('hero', 'instagram')"
                                 >
                                     <i class="bi bi-instagram"></i>
                                 </a>
@@ -145,6 +157,7 @@
                                     rel="noopener noreferrer"
                                     class="iconButton"
                                     data-tooltip-text="Email me"
+                                    onclick="trackEventClickSocialLink('hero', 'email')"
                                 >
                                     <i class="bi bi-envelope-fill"></i>
                                 </a>
@@ -152,7 +165,12 @@
                         </div>
                     </div>
 
-                    <a class="heroMarks" title="Scroll down" href="#commissions">
+                    <a
+                        class="heroMarks"
+                        title="Scroll down"
+                        href="#commissions"
+                        onclick="trackEventNavigate('hero', 'commissions')"
+                    >
                         <img class="heroMark" src="img/mark.png" alt="Triangle mark down" />
                         <img class="heroMark" src="img/mark.png" alt="Triangle mark down" />
                         <img class="heroMark" src="img/mark.png" alt="Triangle mark down" />
@@ -295,6 +313,7 @@
                                                         href="https://discord.gg/SqNF2q2"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
+                                                        onclick="trackEventClickSocialLink('commission_type', 'discord')"
                                                     >
                                                         <i
                                                             class="fa fa-discord"
@@ -309,6 +328,7 @@
                                                         href="https://bsky.app/profile/bluerhapsodyy.bsky.social"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
+                                                        onclick="trackEventClickSocialLink('commission_type', 'bluesky')"
                                                     >
                                                         <i
                                                             class="fa fa-bluesky"
@@ -323,6 +343,7 @@
                                                         href="https://www.instagram.com/bluerhapsodyy/"
                                                         target="_blank"
                                                         rel="noopener noreferrer"
+                                                        onclick="trackEventClickSocialLink('commission_type', 'instagram')"
                                                     >
                                                         <i
                                                             class="bi bi-instagram"
@@ -332,7 +353,11 @@
                                                         ></i>
                                                         &nbsp; Instagram DM
                                                     </a>
-                                                    <a class="button" href="mailto:contact@kip.art">
+                                                    <a
+                                                        class="button"
+                                                        href="mailto:contact@kip.art"
+                                                        onclick="trackEventClickSocialLink('commission_type', 'email')"
+                                                    >
                                                         <i
                                                             class="bi bi-envelope-fill"
                                                             style="color: var(--color-email)"
@@ -470,6 +495,7 @@
                             href="https://bsky.app/profile/bluerhapsodyy.bsky.social"
                             target="_blank"
                             rel="noopener noreferrer"
+                            onclick="trackEventClickSocialLink('gallery', 'bluesky')"
                         >
                             <i class="fa fa-bluesky"></i>
                             Bluesky</a
@@ -516,9 +542,19 @@
                     <p>Hi! I'm BlueRhapsodyy and below is my OC "Kipper".</p>
                     <p>
                         If my
-                        <a href="#gallery" style="color: var(--color-kip-white)">gallery</a> has
-                        convinced you to
-                        <a href="#commissions" style="color: var(--color-kip-white)">commission</a>
+                        <a
+                            href="#gallery"
+                            style="color: var(--color-kip-white)"
+                            onclick="trackEventNavigate('about', 'gallery')"
+                            >gallery</a
+                        >
+                        has convinced you to
+                        <a
+                            href="#commissions"
+                            style="color: var(--color-kip-white)"
+                            onclick="trackEventNavigate('about', 'commissions')"
+                            >commission</a
+                        >
                         me, contact me. I'd love to work with you!
                     </p>
 
@@ -533,6 +569,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         data-tooltip-text="Follow me on Bluesky"
+                                        onclick="trackEventClickSocialLink('about', 'bluesky')"
                                     >
                                         <i
                                             class="fa fa-bluesky"
@@ -548,6 +585,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         data-tooltip-text="Follow me on Instagram"
+                                        onclick="trackEventClickSocialLink('about', 'instagram')"
                                     >
                                         <i
                                             class="bi bi-instagram"
@@ -563,6 +601,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         data-tooltip-text="Join my Discord Server"
+                                        onclick="trackEventClickSocialLink('about', 'discord')"
                                     >
                                         <i
                                             class="fa fa-discord"
@@ -578,6 +617,7 @@
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         data-tooltip-text="Send me an email"
+                                        onclick="trackEventClickSocialLink('about', 'email')"
                                     >
                                         <i
                                             class="bi bi-envelope-fill"
@@ -657,6 +697,7 @@
                                         class="footerLink"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        onclick="trackEventClickSocialLink('footer', 'bluesky')"
                                     >
                                         <i
                                             class="fa fa-bluesky"
@@ -673,6 +714,7 @@
                                         class="footerLink"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        onclick="trackEventClickSocialLink('footer', 'instagram')"
                                     >
                                         <i
                                             class="bi bi-instagram"
@@ -689,6 +731,7 @@
                                         class="footerLink"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        onclick="trackEventClickSocialLink('footer', 'discord')"
                                     >
                                         <i
                                             class="fa fa-discord"
@@ -705,6 +748,7 @@
                                         class="footerLink"
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        onclick="trackEventClickSocialLink('footer', 'email')"
                                     >
                                         <i
                                             class="bi bi-envelope-fill"

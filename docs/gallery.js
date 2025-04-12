@@ -323,6 +323,7 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
     closeEl.addEventListener("click", () => {
         dialogEl.close();
         dialogEl.remove();
+        trackEventGalleryInteract("close");
     });
     closeEl.addEventListener("mousedown", unhideControls);
     dialogEl.appendChild(closeEl);
@@ -354,6 +355,8 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
             loadNewImage(newImage.imgUrl, newImage.title);
 
             currentIndex = newIndex;
+
+            trackEventGalleryInteract("next");
         });
         nextEl.addEventListener("mousedown", unhideControls);
         dialogEl.appendChild(nextEl);
@@ -370,6 +373,8 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
             loadNewImage(newImage.imgUrl, newImage.title);
 
             currentIndex = newIndex;
+
+            trackEventGalleryInteract("prev");
         });
         prevEl.addEventListener("mousedown", unhideControls);
         dialogEl.appendChild(prevEl);
@@ -422,8 +427,9 @@ if (imgParam) {
 /**
  * @param {GalleryImage[]} galleryImages
  * @param {boolean} lazy
+ * @param {{type:string,value:string|null}|null} tracking
  */
-function loadGallery(galleryImages, lazy, pathPrefix = "") {
+function loadGallery(galleryImages, lazy, pathPrefix = "", tracking = null) {
     const galleryTemplateEl = document.getElementById("galleryImageTemplate");
 
     function createDialogNav(ii) {
@@ -449,14 +455,21 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
         const imageEl = clone.querySelector(".galleryImage");
         imageEl.style.backgroundImage = `url(${pathPrefix}img/gallery/${galleryImage.imgUrl})`;
         const nav = createDialogNav(i);
-        imageEl.addEventListener("click", () =>
+        imageEl.addEventListener("click", () => {
+            if (tracking) {
+                trackEventOpenGalleryImage(
+                    tracking.type,
+                    tracking.value,
+                    `img/gallery/${galleryImage.imgUrl}`
+                );
+            }
             spawnGalleryDialog(
                 `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
                 galleryImage.title,
                 true,
                 nav
-            )
-        );
+            );
+        });
 
         if (lazy) {
             imageEl.style.animationName = "gallery-lazy-load-in";
@@ -508,14 +521,21 @@ function loadGallery(galleryImages, lazy, pathPrefix = "") {
             const masonryItem = document.createElement("a");
             masonryItem.classList.add("masonryItem");
             const nav = createDialogNav(i);
-            masonryItem.addEventListener("click", () =>
+            masonryItem.addEventListener("click", () => {
+                if (tracking) {
+                    trackEventOpenGalleryImage(
+                        tracking.type,
+                        tracking.value,
+                        `img/gallery/${galleryImage.imgUrl}`
+                    );
+                }
                 spawnGalleryDialog(
                     `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
                     galleryImage.title,
                     true,
                     nav
-                )
-            );
+                );
+            });
             masonryItem.target = "_blank";
             /** @type {HTMLImageElement} */
             const masonryImg = document.createElement("img");
