@@ -323,7 +323,9 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
     closeEl.addEventListener("click", () => {
         dialogEl.close();
         dialogEl.remove();
-        trackEventGalleryInteract("close");
+        try {
+            trackEventGalleryInteract("close");
+        } catch (error) {}
     });
     closeEl.addEventListener("mousedown", unhideControls);
     dialogEl.appendChild(closeEl);
@@ -356,7 +358,9 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
 
             currentIndex = newIndex;
 
-            trackEventGalleryInteract("next");
+            try {
+                trackEventGalleryInteract("next");
+            } catch (error) {}
         });
         nextEl.addEventListener("mousedown", unhideControls);
         dialogEl.appendChild(nextEl);
@@ -374,7 +378,9 @@ function spawnGalleryDialog(imgUrl, title, ref = false, nav = null) {
 
             currentIndex = newIndex;
 
-            trackEventGalleryInteract("prev");
+            try {
+                trackEventGalleryInteract("prev");
+            } catch (error) {}
         });
         prevEl.addEventListener("mousedown", unhideControls);
         dialogEl.appendChild(prevEl);
@@ -457,11 +463,13 @@ function loadGallery(galleryImages, lazy, pathPrefix = "", tracking = null) {
         const nav = createDialogNav(i);
         imageEl.addEventListener("click", () => {
             if (tracking) {
-                trackEventOpenGalleryImage(
-                    tracking.type,
-                    tracking.value,
-                    `img/gallery/${galleryImage.imgUrl}`
-                );
+                try {
+                    trackEventOpenGalleryImage(
+                        tracking.type,
+                        tracking.value,
+                        `img/gallery/${galleryImage.imgUrl}`
+                    );
+                } catch (error) {}
             }
             spawnGalleryDialog(
                 `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,
@@ -523,11 +531,13 @@ function loadGallery(galleryImages, lazy, pathPrefix = "", tracking = null) {
             const nav = createDialogNav(i);
             masonryItem.addEventListener("click", () => {
                 if (tracking) {
-                    trackEventOpenGalleryImage(
-                        tracking.type,
-                        tracking.value,
-                        `img/gallery/${galleryImage.imgUrl}`
-                    );
+                    try {
+                        trackEventOpenGalleryImage(
+                            tracking.type,
+                            tracking.value,
+                            `img/gallery/${galleryImage.imgUrl}`
+                        );
+                    } catch (error) {}
                 }
                 spawnGalleryDialog(
                     `${pathPrefix}img/gallery/${galleryImage.imgUrl}`,

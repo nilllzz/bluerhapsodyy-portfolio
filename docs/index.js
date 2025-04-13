@@ -443,7 +443,9 @@ function onClickCommissionSlate(slateEl) {
         return;
     }
 
-    trackEventOpenCommissionType(commissionId);
+    try {
+        trackEventOpenCommissionType(commissionId);
+    } catch (error) {}
 
     // Copy commission slate into the dialog.
     const slateTargetEl = document.getElementById("commissionDetailsDialogSlateTarget");
@@ -484,11 +486,13 @@ function onClickCommissionSlate(slateEl) {
             const exampleImageAEl = exampleImageEl.querySelector("a");
             exampleImageAEl.style.backgroundImage = `url(img/commissions/${example.imgUrl})`;
             exampleImageAEl.addEventListener("click", () => {
-                trackEventOpenGalleryImage(
-                    "commission_type",
-                    commissionId,
-                    `img/commissions/${example.imgUrl}`
-                );
+                try {
+                    trackEventOpenGalleryImage(
+                        "commission_type",
+                        commissionId,
+                        `img/commissions/${example.imgUrl}`
+                    );
+                } catch (error) {}
                 spawnGalleryDialog(
                     `img/commissions/${example.imgUrl}`,
                     example.title || "",
@@ -563,6 +567,8 @@ function openCommissionDetailsDialogFromQuery() {
 openCommissionDetailsDialogFromQuery();
 
 function onClickAboutSheet() {
-    trackEventOpenGalleryImage("single", "single:commission_sheet", "img/sheet.png");
+    try {
+        trackEventOpenGalleryImage("single", "single:commission_sheet", "img/sheet.png");
+    } catch (error) {}
     spawnGalleryDialog(`img/sheet.png`, "", true);
 }
