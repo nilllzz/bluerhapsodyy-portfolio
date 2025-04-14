@@ -79,7 +79,7 @@ loadGallery(indexGalleryImages, false, "", { type: "gallery", value: "index" });
 function onClickExpandGallery() {
     const galleryParentEl = document.getElementById("galleryParent");
     galleryParentEl.classList.toggle("closed");
-    loadGallery(indexGalleryImages, true, { type: "gallery", value: "index" });
+    loadGallery(indexGalleryImages, true, "", { type: "gallery", value: "index" });
 }
 
 /**
